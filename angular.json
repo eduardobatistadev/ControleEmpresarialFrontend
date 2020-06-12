@@ -28,7 +28,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/bootstrap/dist/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "controleEmpresarial"
+    }
+  },
+  "defaultProject": "controleEmpresarial",
+  "cli": {
+    "analytics": false
+  }
 }

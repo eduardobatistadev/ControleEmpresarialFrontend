@@ -5,63 +5,62 @@
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">CPF</label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.cpf" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Atendente</label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.atendente" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Cel<span class="text-danger">*</span></label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.cel" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Tel</label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.tel" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Email</label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.email" class="form-control">
   </div>
   <div class="form-group col-lg-6">
     <label for="nome">Site</label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.site" class="form-control">
   </div>
   <div class="form-group col-lg-6">
     <label for="nome">Ramo De Atuação<span class="text-danger">*</span></label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.ramoDeAtuacao" class="form-control">
   </div>
   <div class="form-group col-lg-2">
     <label for="nome">CEP<span class="text-danger">*</span></label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.cep" class="form-control">
   </div>
-
   <div class="form-group col-lg-2">
     <label for="nome">Numero<span class="text-danger">*</span></label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.numeroCasa" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Complemento<span class="text-danger">*</span></label>
-    <input type="text" class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.complemento" class="form-control">
   </div>
   <div class="form-group col-lg-4">
     <label for="nome">Bairro<span class="text-danger">*</span></label>
-    <input type="text" readonly class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.bairro" readonly class="form-control">
   </div>
   <div class="form-group col-lg-6">
     <label for="nome">Rua<span class="text-danger">*</span></label>
-    <input type="text" readonly class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.rua" readonly class="form-control">
   </div>
   <div class="form-group col-lg-3">
     <label for="nome">Cidade<span class="text-danger">*</span></label>
-    <input type="text" readonly class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.cidade" readonly class="form-control">
   </div>
   <div class="form-group col-lg-3">
     <label for="nome">Estado<span class="text-danger">*</span></label>
-    <input type="text" readonly class="form-control">
+    <input type="text" [(ngModel)]="fornecedor.estado" readonly class="form-control">
   </div>
   <div class="form-group col-lg-12">
     <label for="nome">Obs</label>
-    <textarea class="form-control"></textarea>
+    <textarea [(ngModel)]="fornecedor.obs" class="form-control"></textarea>
   </div>
 </div>

@@ -4,8 +4,10 @@ import { Projeto } from './projeto';
 export class Cliente {
     id: number;
     nome: string;
+    cpf: number;
     cep: number;
     rua: string;
+    cidade: string;
     estado: string;
     bairro: string;
     numeroCasa: string;

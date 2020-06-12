@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "controleEmpresarial"
+    }
+  },
+  "defaultProject": "controleEmpresarial",
+  "cli": {
+    "analytics": false
+  }
 }

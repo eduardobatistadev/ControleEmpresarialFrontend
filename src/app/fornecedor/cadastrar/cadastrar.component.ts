@@ -12,6 +12,7 @@ export class CadastrarComponent implements OnInit {
 
   fornecedor = new Fornecedor();
   erroEndereco: string;
+  erroForm: string;
 
   constructor(private fornecedorService: FornecedorService, private viacep: NgxViacepService) { }
 
@@ -20,6 +21,11 @@ export class CadastrarComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.fornecedor);
+    this.fornecedorService.save(this.fornecedor).subscribe(
+      data => {},
+      error => {
+        console.log(error);
+    });
   }
 
   buscaEnderecoPorCep(){
@@ -30,7 +36,6 @@ export class CadastrarComponent implements OnInit {
       this.fornecedor.estado = endereco.uf;
       this.erroEndereco = '';
      }).catch( (error: ErroCep) => {
-      console.log(error.message);
       switch (error.getCode()){
         case ErrorValues.CEP_NAO_ENCONTRADO:
           this.erroEndereco = 'CEP informado não existe';

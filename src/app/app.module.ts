@@ -1,3 +1,4 @@
+import { NgxViacepService } from '@brunoc/ngx-viacep';
 import { FornecedorModule } from './fornecedor/fornecedor.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,7 @@ import { ProjetoModule } from './projeto/projeto.module';
     ClienteModule,
     ProjetoModule
   ],
-  providers: [],
+  providers: [ NgxViacepService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

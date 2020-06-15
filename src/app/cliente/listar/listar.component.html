@@ -1,0 +1,40 @@
+<table class="table table-hover table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cel</th>
+        <th scope="col">Email</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Estado</th>
+        <th scope="col" colspan="3">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tempClientes of cliente">
+        <th scope="row">{{tempClientes.id}}</th>
+        <td>{{tempClientes.nome}}</td>
+        <td>{{tempClientes.celular}}</td>
+        <td>{{tempClientes.email}}</td>
+        <td>{{tempClientes.cidade}}</td>
+        <td>{{tempClientes.estado}}</td>
+        <td><a class="text-success" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a></td>
+        <td><a class="text-primary" href=""><i class="fas fa-user-cog"></i></a></td>
+        <td><a class="text-danger" href=""><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+      <div class="collapse" id="infos">
+      <tr>
+        <th scope="row">Nome</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+        <th scope="row">1</th>
+      </tr>
+    </div>
+   
+    </tbody>
+  </table>
+  

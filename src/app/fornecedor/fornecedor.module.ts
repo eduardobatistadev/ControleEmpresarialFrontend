@@ -1,3 +1,4 @@
+import { NgxViacepService } from '@brunoc/ngx-viacep';
 import { FornecedorService } from './../shared/service/fornecedor.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule, FormsModule
   ],
-  providers: [ FornecedorService ]
+  providers: [ FornecedorService, NgxViacepService ]
 })
 export class FornecedorModule { }

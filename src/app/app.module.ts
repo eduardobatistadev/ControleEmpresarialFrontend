@@ -8,6 +8,7 @@ import { NavbarComponent } from './fragments/navbar/navbar.component';
 import { FooterComponent } from './fragments/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClienteModule } from './cliente/cliente.module';
+import { ProjetoModule } from './projeto/projeto.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ClienteModule } from './cliente/cliente.module';
     AppRoutingModule,
     FornecedorModule,
     HttpClientModule,
-    ClienteModule
+    ClienteModule,
+    ProjetoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

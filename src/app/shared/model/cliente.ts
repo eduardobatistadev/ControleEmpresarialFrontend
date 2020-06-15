@@ -5,7 +5,7 @@ export class Cliente {
     id: number;
     nome: string;
     cpf: number;
-    cep: number;
+    cep: string;
     rua: string;
     cidade: string;
     estado: string;

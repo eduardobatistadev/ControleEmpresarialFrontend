@@ -6,9 +6,10 @@ export class Projeto {
     nomeProjeto: string;
     dt_inicio: Date;
     dt_fim: Date;
-    cep: number;
+    cep: string;
     rua: string;
     cidade: string;
+    estado: string;
     bairro: string;
     numeroCasa: number;
     complemento: string;

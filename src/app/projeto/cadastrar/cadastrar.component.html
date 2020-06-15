@@ -1,8 +1,58 @@
 <div class="row col-lg-10 m-auto">
     <div class="form-group col-lg-4">
-      <label for="nome">Nome<span class="text-danger">*</span></label>
-      <input type="text" [(ngModel)]="projeto.nomeProjeto" class="form-control">
+      <label for="nome">Nome do Projeto<span class="text-danger">*</span></label>
+      <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" class="form-control">
     </div>
+    <div class="form-group col-lg-4">
+        <label for="data_inicio">Data Início<span class="text-danger">*</span></label>
+        <input name="data_inicio" id="data_inicio" type="text" [(ngModel)]="projeto.dt_inicio" class="form-control">
+      </div>
+      <div class="form-group col-lg-4">
+        <label for="data_fim">Data fim<span class="text-danger">*</span></label>
+        <input name="data_fim" id="data_fim" type="text" [(ngModel)]="projeto.dt_fim" class="form-control">
+      </div>
+      <div class="form-group col-lg-12">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao" [(ngModel)]="projeto.descricao" class="form-control"></textarea>
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="img">Imagens do Projeto<span class="text-danger">*</span></label>
+        <input name="img" id="img" type="text" [(ngModel)]="projeto.img" class="form-control">
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="valorTotal">Valor</label>
+        <input name="valorTotal" id="valorTotal" type="number" [(ngModel)]="projeto.valorTotal" class="form-control">
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="cep">Cep<span class="text-danger">*</span></label>
+        <input (blur)="buscaEnderecoPorCep()" name="cep" id="cep" type="text" [(ngModel)]="projeto.cep" class="form-control">
+        <span class="small text-danger" *ngIf="erroEndereco">{{erroEndereco}}</span>
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="num">Numero<span class="text-danger">*</span></label>
+        <input name="num" id="num" type="text" [(ngModel)]="projeto.numeroCasa" class="form-control">
+      </div>
+      <div class="form-group col-lg-7">
+        <label for="compl">Complemento<span class="text-danger">*</span></label>
+        <input name="compl" id="compl" type="text" [(ngModel)]="projeto.complemento" class="form-control">
+      </div>
+      <div class="form-group col-lg-5">
+        <label for="bairro">Bairro<span class="text-danger">*</span></label>
+        <input name="bairro" id="bairro" type="text" [(ngModel)]="projeto.bairro" readonly class="form-control">
+      </div>
+      <div class="form-group col-lg-6">
+        <label for="rua">Rua<span class="text-danger">*</span></label>
+        <input name="rua" id="rua" type="text" [(ngModel)]="projeto.rua" readonly class="form-control">
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="cidade">Cidade<span class="text-danger">*</span></label>
+        <input name="cidade" id="cidade" type="text" [(ngModel)]="projeto.cidade" readonly class="form-control">
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="estado">Estado<span class="text-danger">*</span></label>
+        <input name="estado" id="estado" type="text" [(ngModel)]="projeto.estado" readonly class="form-control">
+      </div>
+     
   </div>
   
 

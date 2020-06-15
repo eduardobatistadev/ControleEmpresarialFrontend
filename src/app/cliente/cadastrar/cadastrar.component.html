@@ -1,60 +1,60 @@
+<form (ngSubmit)="onSubmit()" #projetoForm="ngForm">
 <div class="row col-lg-10 m-auto">
     <div class="form-group col-lg-4">
       <label for="nome">Nome<span class="text-danger">*</span></label>
       <input type="text" [(ngModel)]="cliente.nome" class="form-control">
     </div>
     <div class="form-group col-lg-4">
-      <label for="nome">CPF</label>
-      <input type="text" [(ngModel)]="cliente.cpf" class="form-control">
+      <label for="cpf">CPF</label>
+      <input name="cpf" id="cpf" type="text" [(ngModel)]="cliente.cpf" class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Data de Nascimento</label>
-        <input type="text" [(ngModel)]="cliente.dt_nasc" class="form-control">
+        <label for="dt_nasc">Data de Nascimento</label>
+        <input name="dt_nasc" id="dt_nasc" type="date" [(ngModel)]="cliente.dt_nasc" class="form-control">
       </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Email</label>
-        <input type="text" [(ngModel)]="cliente.email" class="form-control">
+        <label for="email">Email</label>
+        <input name="email" id="email" type="email" [(ngModel)]="cliente.email" class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Celular</label>
-        <input type="text" [(ngModel)]="cliente.celular" class="form-control">
+        <label for="cel">Celular</label>
+        <input name="cel" id="cel" type="tel" [(ngModel)]="cliente.celular" class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">telefone Fixo</label>
-        <input type="text" [(ngModel)]="cliente.telefoneFixo" class="form-control">
+        <label  for="tel">telefone Fixo</label>
+        <input name="tel" id="tel" type="tel" [(ngModel)]="cliente.telefoneFixo" class="form-control">
     </div>
     <div class="form-group col-lg-2">
-        <label for="nome">Cep</label>
-        <input type="text" [(ngModel)]="cliente.cep" class="form-control">
+        <label for="cep">Cep</label>
+        <input name="cep" id="cep" type="text" (blur)="buscaEnderecoPorCep()" [(ngModel)]="cliente.cep" class="form-control">
+        <span class="small text-danger" *ngIf="erroEndereco">{{erroEndereco}}</span>
     </div>
     <div class="form-group col-lg-8">
-        <label for="nome">Rua</label>
-        <input type="text" [(ngModel)]="cliente.rua" class="form-control">
+        <label for="rua">Rua</label>
+        <input name="rua" id="rua" type="text" [(ngModel)]="cliente.rua" readonly class="form-control">
     </div>
     <div class="form-group col-lg-2">
-        <label for="nome">Número</label>
-        <input type="text" [(ngModel)]="cliente.numeroCasa" class="form-control">
+        <label for="num">Número</label>
+        <input name="num" id="num" type="text" [(ngModel)]="cliente.numeroCasa" class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Bairro</label>
-        <input type="text" [(ngModel)]="cliente.bairro" class="form-control">
+        <label for="bairro">Bairro</label>
+        <input name="bairro" id="bairro" type="text" [(ngModel)]="cliente.bairro" readonly class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Cidade</label>
-        <input type="text" [(ngModel)]="cliente.cidade" class="form-control">
+        <label for="cidade">Cidade</label>
+        <input name="cidade" id="cidade" type="text" [(ngModel)]="cliente.cidade" readonly class="form-control">
     </div>
     <div class="form-group col-lg-4">
-        <label for="nome">Estado</label>
-        <input type="text" [(ngModel)]="cliente.estado" class="form-control">
+        <label for="estado">Estado</label>
+        <input name="estado" id="estado" type="text" [(ngModel)]="cliente.estado" readonly class="form-control">
     </div>
     <div class="form-group col-lg-6">
-        <label for="nome">Complemento</label>
-        <input type="text" [(ngModel)]="cliente.complemento" class="form-control">
+        <label for="compl">Complemento</label>
+        <input name="compl" id="compl" type="text" [(ngModel)]="cliente.complemento" class="form-control">
     </div>
-
-      
-
-
-    
+        <div class="col-lg-12">
+        <button class="btn btn-success btn-block">Cadastrar Cliente</button>
+        </div>
   </div>
-  
+</form>

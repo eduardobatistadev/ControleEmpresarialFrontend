@@ -53,8 +53,13 @@
         <label for="compl">Complemento</label>
         <input name="compl" id="compl" type="text" [(ngModel)]="cliente.complemento" class="form-control">
     </div>
+    <div *ngIf="projetoForm.invalid; else botaoLiberado" class="col-lg-12">
+        <button disabeld class="btn btn-secondary btn-block">Cadastrar Fornecedor</button>
+      </div>
+      <ng-template #botaoLiberado>
         <div class="col-lg-12">
         <button class="btn btn-success btn-block">Cadastrar Cliente</button>
         </div>
+    </ng-template>
   </div>
 </form>

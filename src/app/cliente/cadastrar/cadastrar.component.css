@@ -1,0 +1,15 @@
+input{
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(.ng-untouched):not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.ng-untouched:not(.ng-valid):not(form){
+  border-left: 5px solid gray; /* red */
+}

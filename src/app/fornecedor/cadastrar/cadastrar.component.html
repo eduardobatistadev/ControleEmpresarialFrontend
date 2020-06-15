@@ -16,16 +16,18 @@
     </div>
     <div class="form-group col-lg-4">
       <label for="cel">Cel<span class="text-danger">*</span></label>
-      <input name="cel" id="cel" type="text" [(ngModel)]="fornecedor.cel" #cel="ngModel" class="form-control" required>
+      <input name="cel" id="cel" type="tel" [(ngModel)]="fornecedor.cel" #cel="ngModel" class="form-control" required>
       <span class="small text-danger" *ngIf="cel.invalid && (cel.dirty || cel.touched)">Celular é obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
       <label for="tel">Tel</label>
-      <input name="tel" id="tel" type="text" [(ngModel)]="fornecedor.tel" class="form-control">
+      <input name="tel" id="tel" type="tel" [(ngModel)]="fornecedor.tel" class="form-control">
     </div>
     <div class="form-group col-lg-4">
       <label for="email">Email</label>
-      <input name="email" id="email" type="text" [(ngModel)]="fornecedor.email" class="form-control">
+      <input name="email" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required #email="ngModel" [(ngModel)]="fornecedor.email" class="form-control">
+      <span class="small text-danger" *ngIf="email.errors.required && (email.dirty || email.touched)">Email é obrigatório</span>
+      <span class="small text-danger" *ngIf="email.errors.pattern && (email.dirty || email.touched)">Email deve conter @ e .</span>
     </div>
     <div class="form-group col-lg-6">
       <label for="site">Site</label>

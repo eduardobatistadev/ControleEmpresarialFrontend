@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CadastrarComponent, HomeComponent],
   imports: [
     CommonModule
   ]

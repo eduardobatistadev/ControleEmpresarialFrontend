@@ -34,4 +34,13 @@ export class ListarComponent implements OnInit {
     location.reload();
   }
 
+  delete(id: number){
+    console.log(id);
+    this.service.deleteById(id).subscribe( data => {
+      this.buscarDados();
+    }, error => {
+      console.log(error);
+    });
+  }
+
 }

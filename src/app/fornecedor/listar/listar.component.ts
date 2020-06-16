@@ -19,7 +19,7 @@ export class ListarComponent implements OnInit {
   ngOnInit(): void {
     this.common.demoSubject.subscribe(res => {
       this.buscarDados();
-      });
+    });
     this.buscarDados();
   }
 
@@ -34,13 +34,21 @@ export class ListarComponent implements OnInit {
     location.reload();
   }
 
-  delete(id: number){
+  edit(id: number){
     console.log(id);
-    this.service.deleteById(id).subscribe( data => {
-      this.buscarDados();
-    }, error => {
-      console.log(error);
-    });
+    this.common.setEditId(id);
   }
 
+  delete(id: number, nome: string) {
+    if (confirm('Certeza que deseja excluir o fornecedor ' + nome)) {
+      console.log(id);
+      this.service.deleteById(id).subscribe(data => {
+        this.buscarDados();
+      }, error => {
+        console.log(error);
+      });
+    } else {
+
+    }
+  }
 }

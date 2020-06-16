@@ -1,4 +1,5 @@
 <form (ngSubmit)="onSubmit()" #fornecedorForm="ngForm">
+  <input type="hidden" name="id" [(ngModel)]="fornecedor.id">
   <div class="row">
     <div class="form-group col-lg-4">
       <label for="nome">Nome Empresa<span class="text-danger">*</span></label>

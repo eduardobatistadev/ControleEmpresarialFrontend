@@ -28,6 +28,17 @@ export class CadastrarComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetaForm();
+    this.common.idSubject.subscribe(res => {
+      console.log(res);
+      this.buscarPorId(res);
+    });
+  }
+
+  buscarPorId(id: number){
+    console.log('oi');
+    this.fornecedorService.findById(id).subscribe( data => {
+      this.fornecedor = data;
+    });
   }
 
   onSubmit(): void {

@@ -26,8 +26,8 @@ export class FornecedorService {
     return this.http.get<Fornecedor>(`${this.url}/${id}`);
   }
 
-  public deleteById(id: number): void {
-    this.http.delete(`${this.url}/${id}`).subscribe();
+  public deleteById(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
   }
 
   public update(fornecedor: Fornecedor): Observable<Fornecedor> {

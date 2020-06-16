@@ -15,18 +15,16 @@ export class HomeComponent implements OnInit {
       if (res !== null) {
         this.abreForm();
       } else {
-        this.fechaForm();
       }
     });
   }
 
   abreForm() {
+    const button = document.getElementById('formButton');
     const div = document.getElementById('formFornecedor');
-    div.className = 'collapse show';
-  }
-
-  fechaForm() {
-    const div = document.getElementById('formFornecedor');
-    div.className = 'collapse';
+    if (!div.classList.contains('show')) {
+      button.click();
+    } else {
+    }
   }
 }

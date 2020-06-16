@@ -89,13 +89,26 @@
       <label for="obs">Obs</label>
       <textarea name="obs" id="obs" [(ngModel)]="fornecedor.obs" class="form-control"></textarea>
     </div>
-    <div *ngIf="fornecedorForm.invalid; else botaoLiberado" class="col-lg-12">
-      <button disabled class="btn btn-secondary btn-block">Cadastrar Fornecedor</button>
-    </div>
-    <ng-template #botaoLiberado>
-      <div class="col-lg-12">
-        <button class="btn btn-success btn-block">Cadastrar Fornecedor</button>
+    <div class="col-lg-12" *ngIf="!fornecedor.id;else alterar">
+      <div *ngIf="fornecedorForm.invalid; else botaoLiberado" >
+        <button disabled class="btn btn-secondary btn-block">Cadastrar Fornecedor</button>
       </div>
+      <ng-template #botaoLiberado>
+          <button class="btn btn-success btn-block">Cadastrar Fornecedor</button>
+      </ng-template>
+    </div>
+    <ng-template #alterar>
+      <div *ngIf="fornecedorForm.invalid; else botaoLiberado" class="col-lg-6">
+        <button disabled class="btn btn-secondary btn-block">Alterar Fornecedor</button>
+      </div>
+      <div class="col-lg-6">
+        <button (click)="cancelar()" class="btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <ng-template #botaoLiberado>
+        <div class="col-lg-6">
+          <button class="btn btn-success btn-block">Alterar Fornecedor</button>
+        </div>
+      </ng-template>
     </ng-template>
   </div>
 </form>

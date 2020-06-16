@@ -8,7 +8,7 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
 
 
 @Component({
-  providers:[ListarComponent],
+  providers: [ListarComponent],
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
@@ -20,11 +20,12 @@ export class CadastrarComponent implements OnInit {
   erroEndereco: string;
   erroForm: string;
   cadastroSucesso: boolean;
+  alterarSucesso: boolean;
 
   constructor(private fornecedorService: FornecedorService
-            , private viacep: NgxViacepService
-            , private listar: ListarComponent
-            , private common: CommonService) { }
+    , private viacep: NgxViacepService
+    , private listar: ListarComponent
+    , private common: CommonService) { }
 
   ngOnInit(): void {
     this.resetaForm();
@@ -34,9 +35,9 @@ export class CadastrarComponent implements OnInit {
     });
   }
 
-  buscarPorId(id: number){
+  buscarPorId(id: number) {
     console.log('oi');
-    this.fornecedorService.findById(id).subscribe( data => {
+    this.fornecedorService.findById(id).subscribe(data => {
       this.fornecedor = data;
     });
   }
@@ -45,7 +46,11 @@ export class CadastrarComponent implements OnInit {
     console.log(this.fornecedor);
     this.fornecedorService.save(this.fornecedor).subscribe(
       data => {
-        this.cadastroSucesso = true;
+        if (this.fornecedor.id) {
+          this.alterarSucesso = true;
+        } else {
+          this.cadastroSucesso = true;
+        }
         this.fornecedor = new Fornecedor();
         this.reload();
         this.fornecedorForm.reset();
@@ -56,12 +61,13 @@ export class CadastrarComponent implements OnInit {
       });
   }
 
-  resetaForm(){
+  resetaForm() {
     this.fornecedor = new Fornecedor();
     this.cadastroSucesso = false;
+    this.alterarSucesso = false;
   }
 
-  reload(){
+  reload() {
     this.common.setSubject(true);
   }
 
@@ -93,7 +99,7 @@ export class CadastrarComponent implements OnInit {
     });
   }
 
-  cancelar(){
+  cancelar() {
     this.resetaForm();
     this.fornecedorForm.reset();
   }

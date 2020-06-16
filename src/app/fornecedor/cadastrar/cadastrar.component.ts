@@ -23,15 +23,17 @@ export class CadastrarComponent implements OnInit {
   alterarSucesso: boolean;
 
   constructor(private fornecedorService: FornecedorService
-    , private viacep: NgxViacepService
-    , private listar: ListarComponent
-    , private common: CommonService) { }
+            , private viacep: NgxViacepService
+            , private listar: ListarComponent
+            , private common: CommonService) { }
 
   ngOnInit(): void {
     this.resetaForm();
     this.common.idSubject.subscribe(res => {
       console.log(res);
-      this.buscarPorId(res);
+      if (res !== null) {
+        this.buscarPorId(res);
+      }
     });
   }
 
@@ -102,5 +104,6 @@ export class CadastrarComponent implements OnInit {
   cancelar() {
     this.resetaForm();
     this.fornecedorForm.reset();
+    this.common.setEditId(null);
   }
 }

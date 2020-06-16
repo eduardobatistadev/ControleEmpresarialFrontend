@@ -1,8 +1,4 @@
-
 <form (ngSubmit)="onSubmit()" #fornecedorForm="ngForm">
-  <div *ngIf="cadastroSucesso" class="alert alert-success" role="alert">
-    Fornecedor cadastrado com sucesso!
-  </div>
   <div class="row">
     <div class="form-group col-lg-4">
       <label for="nome">Nome Empresa<span class="text-danger">*</span></label>
@@ -29,11 +25,14 @@
     </div>
     <div class="form-group col-lg-4">
       <label for="email">Email</label>
-      <input name="email" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #email="ngModel"  [(ngModel)]="fornecedor.email" placeholder="" class="form-control" required>
+      <input name="email" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel"
+        [(ngModel)]="fornecedor.email" placeholder="" class="form-control" required>
       <div *ngIf="email.touched">
-      <span class="small text-danger" *ngIf="email.errors?.required && (email.dirty || email.touched)">Email é obrigatório</span>
-      <span class="small text-danger" *ngIf="email.errors?.pattern && (email.dirty || email.touched)">Email deve conter @ e .</span>
-    </div>
+        <span class="small text-danger" *ngIf="email.errors?.required && (email.dirty || email.touched)">Email é
+          obrigatório</span>
+        <span class="small text-danger" *ngIf="email.errors?.pattern && (email.dirty || email.touched)">Email deve
+          conter @ e .</span>
+      </div>
     </div>
     <div class="form-group col-lg-6">
       <label for="site">Site</label>
@@ -41,8 +40,11 @@
     </div>
     <div class="form-group col-lg-6">
       <label for="ramo">Ramo De Atuação<span class="text-danger">*</span></label>
-      <input name="ramo" id="ramo" type="text" [(ngModel)]="fornecedor.ramoDeAtuacao" class="form-control" required #ramoDeAtuacao="ngModel">
-      <span class="small text-danger" *ngIf="ramoDeAtuacao.invalid && (ramoDeAtuacao.dirty || ramoDeAtuacao.touched)">Ramo De Atuação é obrigatório</span>
+      <input name="ramo" id="ramo" type="text" [(ngModel)]="fornecedor.ramoDeAtuacao" class="form-control" required
+        #ramoDeAtuacao="ngModel">
+      <span class="small text-danger"
+        *ngIf="ramoDeAtuacao.invalid && (ramoDeAtuacao.dirty || ramoDeAtuacao.touched)">Ramo De Atuação é
+        obrigatório</span>
     </div>
     <div class="form-group col-lg-2">
       <label for="cep">CEP<span class="text-danger">*</span></label>
@@ -53,8 +55,10 @@
     </div>
     <div class="form-group col-lg-2">
       <label for="numero">Numero<span class="text-danger">*</span></label>
-      <input name="numero" id="numero" type="text" #numero="ngModel" [(ngModel)]="fornecedor.numeroCasa" class="form-control" required>
-      <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Numero é obrigatório</span>
+      <input name="numero" id="numero" type="text" #numero="ngModel" [(ngModel)]="fornecedor.numeroCasa"
+        class="form-control" required>
+      <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Numero é
+        obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
       <label for="complemento">Complemento</label>
@@ -62,19 +66,23 @@
     </div>
     <div class="form-group col-lg-4">
       <label for="bairro">Bairro<span class="text-danger">*</span></label>
-      <input name="bairro" id="bairro" type="text" [(ngModel)]="fornecedor.bairro" readonly class="form-control" required #bairro="ngModel">
+      <input name="bairro" id="bairro" type="text" [(ngModel)]="fornecedor.bairro" readonly class="form-control"
+        required #bairro="ngModel">
     </div>
     <div class="form-group col-lg-6">
       <label for="rua">Rua<span class="text-danger">*</span></label>
-      <input name="rua" id="rua" type="text" [(ngModel)]="fornecedor.rua" readonly class="form-control" required #rua="ngModel">
+      <input name="rua" id="rua" type="text" [(ngModel)]="fornecedor.rua" readonly class="form-control" required
+        #rua="ngModel">
     </div>
     <div class="form-group col-lg-3">
       <label for="cidade">Cidade<span class="text-danger">*</span></label>
-      <input name="cidade" id="cidade" type="text" [(ngModel)]="fornecedor.cidade" readonly class="form-control" required #cidade="ngModel">
+      <input name="cidade" id="cidade" type="text" [(ngModel)]="fornecedor.cidade" readonly class="form-control"
+        required #cidade="ngModel">
     </div>
     <div class="form-group col-lg-3">
       <label for="estado">Estado<span class="text-danger">*</span></label>
-      <input name="estado" id="estado" type="text" [(ngModel)]="fornecedor.estado" readonly class="form-control" required #estado="ngModel">
+      <input name="estado" id="estado" type="text" [(ngModel)]="fornecedor.estado" readonly class="form-control"
+        required #estado="ngModel">
     </div>
     <div class="form-group col-lg-12">
       <label for="obs">Obs</label>
@@ -89,4 +97,11 @@
       </div>
     </ng-template>
   </div>
+
 </form>
+<div *ngIf="cadastroSucesso" class="alert alert-success mt-3" role="alert">
+  Fornecedor cadastrado com sucesso!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

@@ -15,6 +15,7 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
 })
 export class CadastrarComponent implements OnInit {
   @ViewChild('fornecedorForm') fornecedorForm;
+  @ViewChild('cep') cep;
   fornecedor = new Fornecedor();
   erroEndereco: string;
   erroForm: string;

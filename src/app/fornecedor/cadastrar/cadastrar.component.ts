@@ -30,7 +30,6 @@ export class CadastrarComponent implements OnInit {
   ngOnInit(): void {
     this.resetaForm();
     this.common.idSubject.subscribe(res => {
-      console.log(res);
       if (res !== null) {
         this.buscarPorId(res);
       }
@@ -38,14 +37,12 @@ export class CadastrarComponent implements OnInit {
   }
 
   buscarPorId(id: number) {
-    console.log('oi');
     this.fornecedorService.findById(id).subscribe(data => {
       this.fornecedor = data;
     });
   }
 
   onSubmit(): void {
-    console.log(this.fornecedor);
     this.fornecedorService.save(this.fornecedor).subscribe(
       data => {
         if (this.fornecedor.id) {
@@ -58,7 +55,6 @@ export class CadastrarComponent implements OnInit {
         this.fornecedorForm.reset();
       },
       error => {
-        console.log(error);
         this.cadastroSucesso = false;
       });
   }

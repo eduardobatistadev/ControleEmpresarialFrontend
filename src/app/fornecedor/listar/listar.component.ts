@@ -35,13 +35,11 @@ export class ListarComponent implements OnInit {
   }
 
   edit(id: number){
-    console.log(id);
     this.common.setEditId(id);
   }
 
   delete(id: number, nome: string) {
     if (confirm('Certeza que deseja excluir o fornecedor ' + nome)) {
-      console.log(id);
       this.service.deleteById(id).subscribe(data => {
         this.buscarDados();
       }, error => {

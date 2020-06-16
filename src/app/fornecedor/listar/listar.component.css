@@ -4,3 +4,11 @@
 .opcoes:hover a {
  visibility:visible;
 }
+
+.sort{
+ color: #000;
+}
+
+.sort:hover{
+  color: #888888;
+ }

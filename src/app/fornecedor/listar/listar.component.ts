@@ -12,9 +12,10 @@ export class ListarComponent implements OnInit {
 
 
   constructor(private service: FornecedorService
-            , private common: CommonService) { }
+    , private common: CommonService) { }
 
   fornecedores: Fornecedor[];
+  sortedByName: boolean;
 
   ngOnInit(): void {
     this.common.demoSubject.subscribe(res => {
@@ -30,11 +31,25 @@ export class ListarComponent implements OnInit {
     });
   }
 
+  dados() {
+    this.fornecedores.sort((a, b) => {
+      if (a.nomeEmpresa.toLocaleUpperCase() < b.nomeEmpresa.toLocaleUpperCase()) { return -1; }
+      if (a.nomeEmpresa.toLocaleUpperCase() > b.nomeEmpresa.toLocaleUpperCase()) { return 1; }
+      return 0;
+    });
+    this.sortedByName = true;
+  }
+
+  reverse() {
+    this.fornecedores.reverse();
+    this.sortedByName = false;
+  }
+
   reload() {
     location.reload();
   }
 
-  edit(id: number){
+  edit(id: number) {
     this.common.setEditId(id);
   }
 

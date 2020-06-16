@@ -1,42 +1,67 @@
+import { CommonService } from './../../shared/service/common.service';
+import { CommonModule } from '@angular/common';
+import { ListarComponent } from './../listar/listar.component';
 import { Fornecedor } from './../../shared/model/fornecedor';
 import { FornecedorService } from './../../shared/service/fornecedor.service';
-import { Component, OnInit } from '@angular/core';
-import { NgxViacepService, Endereco, ErroCep, ErrorValues  } from '@brunoc/ngx-viacep';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
+
 
 @Component({
+  providers:[ListarComponent],
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
 })
 export class CadastrarComponent implements OnInit {
-
+  @ViewChild('fornecedorForm') fornecedorForm;
   fornecedor = new Fornecedor();
   erroEndereco: string;
   erroForm: string;
+  cadastroSucesso: boolean;
 
-  constructor(private fornecedorService: FornecedorService, private viacep: NgxViacepService) { }
+  constructor(private fornecedorService: FornecedorService
+            , private viacep: NgxViacepService
+            , private listar: ListarComponent
+            , private common: CommonService) { }
 
   ngOnInit(): void {
+    this.resetaForm();
   }
 
   onSubmit(): void {
     console.log(this.fornecedor);
     this.fornecedorService.save(this.fornecedor).subscribe(
-      data => {},
+      data => {
+        this.cadastroSucesso = true;
+        this.fornecedor = new Fornecedor();
+        this.reload();
+        this.fornecedorForm.reset();
+      },
       error => {
         console.log(error);
-    });
+        this.cadastroSucesso = false;
+      });
   }
 
-  buscaEnderecoPorCep(){
-    this.viacep.buscarPorCep(this.fornecedor.cep).then( ( endereco: Endereco ) => {
+  resetaForm(){
+    this.fornecedor = new Fornecedor();
+    this.cadastroSucesso = false;
+  }
+
+  reload(){
+    this.common.setSubject(true);
+  }
+
+  buscaEnderecoPorCep() {
+    this.viacep.buscarPorCep(this.fornecedor.cep).then((endereco: Endereco) => {
       this.fornecedor.bairro = endereco.bairro;
       this.fornecedor.cidade = endereco.localidade;
       this.fornecedor.rua = endereco.logradouro;
       this.fornecedor.estado = endereco.uf;
       this.erroEndereco = '';
-     }).catch( (error: ErroCep) => {
-      switch (error.getCode()){
+    }).catch((error: ErroCep) => {
+      switch (error.getCode()) {
         case ErrorValues.CEP_NAO_ENCONTRADO:
           this.erroEndereco = 'CEP informado não existe';
           break;
@@ -53,6 +78,6 @@ export class CadastrarComponent implements OnInit {
           this.erroEndereco = 'CEP informado é muito longo, um cep deve conter 8 digitos';
           break;
       }
-     });
+    });
   }
 }

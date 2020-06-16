@@ -1,4 +1,4 @@
-<table class="table table-hover table-sm table-striped">
+<table class="table table-hover table-striped my-0 py-0">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,39 +11,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Escalar Aluminios</td>
-      <td>13 981725946</td>
-      <td>binhopecora@gmail.com</td>
-      <td>Aluminíos e box</td>
-      <td>Praia Grande</td>
-      <td><a class="text-success" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a></td>
-      <td><a class="text-primary" href=""><i class="fas fa-user-cog"></i></a></td>
-      <td><a class="text-danger" href=""><i class="fas fa-trash-alt"></i></a></td>
-    </tr>
-    <div class="collapse" id="infos">
-    <tr>
-      <th scope="row">Nome</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-      <th scope="row">1</th>
-    </tr>
-  </div>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+    <tr class="opcoes" *ngFor="let fornecedor of fornecedores">
+      <th scope="row">{{fornecedor.id}}</th>
+      <td>{{fornecedor.nomeEmpresa}}</td>
+      <td>{{fornecedor.cel}}</td>
+      <td>{{fornecedor.email}}</td>
+      <td>{{fornecedor.ramoDeAtuacao}}</td>
+      <td>{{fornecedor.cidade}}</td>
+      <td>
+        <a class="text-success mr-2" data-toggle="collapse" href="#infos" role="button" aria-expanded="false"
+          aria-controls="infos"><i class="fas fa-plus-square"></i></a>
+        <a class="text-primary mx-2" href=""><i class="fas fa-user-cog"></i></a>
+        <a class="text-danger ml-2" href=""><i class="fas fa-trash-alt"></i></a>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -1,0 +1,6 @@
+.opcoes a{
+  visibility:hidden;
+}
+.opcoes:hover a {
+ visibility:visible;
+}

@@ -1,5 +1,5 @@
 .opcoes a{
-  visibility:hidden;
+  color: black;
 }
 .opcoes:hover a {
  visibility:visible;

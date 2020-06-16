@@ -9,6 +9,7 @@ export class CommonService {
   constructor() { }
 
   public demoSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+
   setSubject(value: boolean) {
     if (value) {
       this.demoSubject.next(value);

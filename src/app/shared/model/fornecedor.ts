@@ -1,3 +1,4 @@
+import { Projeto } from 'src/app/shared/model/projeto';
 export class Fornecedor {
   id?: number;
   cpf: string;
@@ -16,4 +17,5 @@ export class Fornecedor {
   bairro: string;
   numeroCasa: string;
   obs?: string;
+  projetos?: Array<Projeto>;
 }

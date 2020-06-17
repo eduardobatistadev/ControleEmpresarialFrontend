@@ -18,7 +18,7 @@ export class CadastrarComponent implements OnInit {
   erroForm: string;
   cadastroSucesso: boolean;
 
-  constructor(private clienteService: ClienteService, 
+  constructor(private clienteService: ClienteService,
               private viacep: NgxViacepService,
               private common: CommonService) { }
 

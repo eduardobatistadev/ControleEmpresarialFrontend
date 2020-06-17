@@ -18,8 +18,8 @@ export class ClienteService {
      return this.http.post<Cliente>(this.url, cliente);
    }
 
-   public findAll(): Observable<Cliente>{
-     return this.http.get<Cliente>(this.url);
+   public findAll(): Observable<Cliente[]>{
+     return this.http.get<Cliente[]>(this.url);
    }
    public findById(id: number): Observable<Cliente>{
      return this.http.get<Cliente>(`${this.url}/${id}`);

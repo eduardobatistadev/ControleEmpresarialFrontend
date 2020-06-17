@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ListarComponent } from './listar/listar.component';
 
 @NgModule({
-  declarations: [HomeComponent, CadastrarComponent, ListarComponent],
+  declarations: [HomeComponent, CadastrarComponent, ListarComponent ],
   imports: [
     CommonModule, FormsModule, SharedModule
   ],

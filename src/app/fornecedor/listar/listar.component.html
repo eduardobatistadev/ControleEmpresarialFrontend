@@ -20,12 +20,75 @@
       <td>{{fornecedor.ramoDeAtuacao}}</td>
       <td>{{fornecedor.cidade}}</td>
       <td>
-        <a class="text-success mr-2" data-toggle="collapse" href="#infos" role="button" aria-expanded="false"
-          aria-controls="infos"><i class="fas fa-plus-square"></i></a>
+        <a class="text-success mr-2" data-toggle="modal" [attr.data-target]="'#f'+fornecedor.id"><i class="fas fa-plus-square"></i></a>
         <a class="text-primary mx-2" (click)="edit(fornecedor.id)" ><i class="fas fa-user-cog"></i></a>
         <a class="text-danger ml-2" (click)="delete(fornecedor.id, fornecedor.nomeEmpresa)" ><i class="fas fa-trash-alt"></i></a>
       </td>
     </tr>
   </tbody>
 </table>
+</div>
+
+<div *ngFor="let f of fornecedores" class="modal fade" [attr.id]="'f'+f.id" tabindex="-1" role="dialog" [attr.aria-labelledby]="f.id" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center mx-auto border-0 mb-0 pb-0">
+        <h5 class="modal-title text-center" [id]="f.id">{{f.nomeEmpresa}}</h5>
+      </div>
+      <div class="modal-body text-center py-0 my-0">
+        <span class="small text-danger text-center py-0 my-0">*campos em branco não são exibidos*</span>
+        <table class="table table-striped table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Ramo</th>
+              <td>{{f.ramoDeAtuacao}}</td>
+            </tr>
+            <tr *ngIf="f.atendente !== null">
+              <th scope="row">Atendente</th>
+              <td>{{f.atendente}}</td>
+            </tr>
+            <tr>
+              <th scope="row">e-mail</th>
+              <td>{{f.email}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Celular</th>
+              <td>{{f.cel}}</td>
+            </tr>
+            <tr *ngIf="f.tel !== null">
+              <th scope="row">Telefone Fixo</th>
+              <td>{{f.tel}}</td>
+            </tr>
+            <tr *ngIf="f.site !== null">
+              <th scope="row">Site</th>
+              <td>{{f.site}}</td>
+            </tr>
+            <tr *ngIf="f.cpf !== null">
+              <th scope="row">CPF</th>
+              <td>{{f.cpf}}</td>
+            </tr>
+            <tr>
+              <th scope="row">CEP</th>
+              <td>{{f.cep}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Endereço</th>
+              <td>{{f.rua}}, {{f.numeroCasa}}, {{f.complemento}} </td>
+            </tr>
+            <tr>
+              <th scope="row">Bairro, Cidade - UF</th>
+              <td>{{f.bairro}}, {{f.cidade}} - {{f.estado}}</td>
+            </tr>
+            <tr *ngIf="f.obs !== null">
+              <th scope="row">Observações</th>
+              <td>{{f.obs}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer border-0 mt-0 pt-0">
+        <button type="button" class="btn btn-secondary btn-block " data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
 </div>

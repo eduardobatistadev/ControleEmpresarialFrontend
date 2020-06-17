@@ -11,8 +11,8 @@ import { CommonService } from 'src/app/shared/service/common.service';
 })
 export class ListarComponent implements OnInit {
 
-  cliente: Cliente;
-  
+  clientes: Cliente[];
+
 
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
 
@@ -24,8 +24,8 @@ export class ListarComponent implements OnInit {
   }
 
   buscarTodos(): void{
-    this.clienteService.findAll().subscribe(cliente => {
-      this.cliente = cliente
+    this.clienteService.findAll().subscribe(data => {
+        this.clientes = data;
     });
   }
 

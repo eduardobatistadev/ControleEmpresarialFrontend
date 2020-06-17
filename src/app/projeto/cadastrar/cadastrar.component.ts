@@ -1,3 +1,5 @@
+import { Cliente } from 'src/app/shared/model/cliente';
+import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjetoService } from 'src/app/shared/service/projeto.service';
 import { Projeto } from 'src/app/shared/model/projeto';
@@ -16,10 +18,12 @@ export class CadastrarComponent implements OnInit {
   erroEndereco: string;
   erroForm: string;
   cadastroSucesso: boolean;
+  clientes: Cliente[];
 
-  constructor(private projetoService: ProjetoService, 
-              private viacep: NgxViacepService, 
-              private common: CommonService) { }
+  constructor(private projetoService: ProjetoService,
+              private viacep: NgxViacepService,
+              private common: CommonService,
+              private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.resetaForm();
@@ -37,6 +41,12 @@ export class CadastrarComponent implements OnInit {
       error => {
         console.log(error);
         this.cadastroSucesso = false;
+    });
+  }
+
+  buscaListaClientes(){
+    this.clienteService.findAll().subscribe( data => {
+      this.clientes = data;
     });
   }
 

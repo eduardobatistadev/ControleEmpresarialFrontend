@@ -1,12 +1,15 @@
 <div class="row bg-ligh m-0">
   <div class="container mt-2">
     <div class="mx-auto text-center">
-      <a id="formButton" class="text-center mx-auto py-1" data-toggle="collapse" href="#formFornecedor" role="button" aria-expanded="false" aria-controls="formFornecedor"><i class="fas fa-plus"></i> Adicionar Fornecedor </a>
+      <a id="formButton" class="text-center mx-auto py-1" data-toggle="collapse" href="#formFornecedor" role="button"
+        aria-expanded="false" aria-controls="formFornecedor"><i class="fas fa-plus"></i> Adicionar Fornecedor </a>
     </div>
-    <div class="collapse" id="formFornecedor">
-      <app-cadastrar></app-cadastrar>
+    <div class="row justify-content-center">
+      <div class="collapse col-lg-10" id="formFornecedor">
+        <app-cadastrar></app-cadastrar>
+      </div>
     </div>
-    <hr/>
+    <hr />
     <app-listar></app-listar>
   </div>
 </div>

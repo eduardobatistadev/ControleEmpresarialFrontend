@@ -13,11 +13,11 @@ export class ListarComponent implements OnInit {
 
   projeto: Projeto;
 
-  constructor(private projetoService:ProjetoService,route: Router,private common: CommonService) { }
+  constructor(private projetoService: ProjetoService, route: Router, private common: CommonService) { }
 
-  
+
   ngOnInit(): void {
-    this.common.demoSubject.subscribe(res =>{
+    this.common.demoSubject.subscribe(res => {
       this.buscarTodos();
     });
     this.buscarTodos();
@@ -25,7 +25,7 @@ export class ListarComponent implements OnInit {
 
   buscarTodos(): void{
     this.projetoService.findAll().subscribe(projeto => {
-      this.projeto = projeto
+      this.projeto = projeto;
     });
   }
 

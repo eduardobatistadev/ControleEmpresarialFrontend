@@ -14,6 +14,7 @@ import { CommonService } from 'src/app/shared/service/common.service';
 export class CadastrarComponent implements OnInit {
   @ViewChild('projetoForm') projetoForm;
   @ViewChild('cep') cep;
+
   projeto = new Projeto();
   erroEndereco: string;
   erroForm: string;
@@ -26,6 +27,7 @@ export class CadastrarComponent implements OnInit {
               private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.buscaListaClientes();
     this.resetaForm();
   }
 
@@ -33,6 +35,7 @@ export class CadastrarComponent implements OnInit {
     console.log(this.projeto);
     this.projetoService.save(this.projeto).subscribe(
       data => {
+        console.log(data);
         this.cadastroSucesso = true;
         this.projeto = new Projeto();
         this.reload();

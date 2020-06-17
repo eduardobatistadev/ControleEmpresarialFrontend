@@ -10,11 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tempProjeto of projeto">
+      <tr *ngFor="let tempProjeto of projetos">
         <th scope="row">{{tempProjeto.id}}</th>
         <td>{{tempProjeto.nomeProjeto}}</td>
         <td>{{tempProjeto.dt_inicio}}</td>
-        <td>{{tempProjeto.cliente.nome}}</td>
+        <td *ngIf="tempProjeto.cliente === null; else cliente">{{tempProjeto.cliente}}</td>
+        <ng-template #cliente><td>{{tempProjeto.cliente.nome}}</td></ng-template>
         <td>{{tempProjeto.valorTotal}}</td>
         <td><a class="text-success" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a></td>
         <td><a class="text-primary" href=""><i class="fas fa-user-cog"></i></a></td>

@@ -17,5 +17,5 @@ export class Fornecedor {
   bairro: string;
   numeroCasa: string;
   obs?: string;
-  projetos?: Array<Projeto>;
+  projetos: Array<Projeto>;
 }

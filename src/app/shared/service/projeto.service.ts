@@ -18,8 +18,8 @@ export class ProjetoService {
      return this.http.post<Projeto>(this.url, projeto);
    }
 
-   public findAll(): Observable<Projeto>{
-     return this.http.get<Projeto>(this.url);
+   public findAll(): Observable<Projeto[]>{
+     return this.http.get<Projeto[]>(this.url);
    }
    public findById(id: number): Observable<Projeto>{
      return this.http.get<Projeto>(`${this.url}/${id}`);

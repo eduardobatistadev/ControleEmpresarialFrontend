@@ -11,7 +11,7 @@ import { ProjetoService } from 'src/app/shared/service/projeto.service';
 })
 export class ListarComponent implements OnInit {
 
-  projeto: Projeto;
+  projetos: Projeto[];
 
   constructor(private projetoService: ProjetoService, route: Router, private common: CommonService) { }
 
@@ -19,13 +19,14 @@ export class ListarComponent implements OnInit {
   ngOnInit(): void {
     this.common.demoSubject.subscribe(res => {
       this.buscarTodos();
-    });
+    }, error => console.log(error.error.text));
     this.buscarTodos();
   }
 
   buscarTodos(): void{
     this.projetoService.findAll().subscribe(projeto => {
-      this.projeto = projeto;
+      this.projetos = projeto;
+      console.log(this.projetos);
     });
   }
 

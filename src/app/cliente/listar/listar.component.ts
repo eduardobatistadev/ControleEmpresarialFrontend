@@ -12,7 +12,8 @@ import { CommonService } from 'src/app/shared/service/common.service';
 export class ListarComponent implements OnInit {
 
   cliente: Cliente;
-  
+  sortedByName: boolean;
+
 
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjetoService } from 'src/app/shared/service/projeto.service';
 import { Projeto } from 'src/app/shared/model/projeto';
 import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
+import { CommonService } from 'src/app/shared/service/common.service';
 
 @Component({
   selector: 'app-cadastrar-projeto',
@@ -9,23 +10,43 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
   styleUrls: ['./cadastrar.component.css']
 })
 export class CadastrarComponent implements OnInit {
-
+  @ViewChild('projetoForm') projetoForm;
+  @ViewChild('cep') cep;
   projeto = new Projeto();
   erroEndereco: string;
   erroForm: string;
+  cadastroSucesso: boolean;
 
-  constructor(private projetoService: ProjetoService, private viacep: NgxViacepService) { }
+  constructor(private projetoService: ProjetoService, 
+              private viacep: NgxViacepService, 
+              private common: CommonService) { }
 
   ngOnInit(): void {
+    this.resetaForm();
   }
 
   onSubmit(): void {
     console.log(this.projeto);
     this.projetoService.save(this.projeto).subscribe(
-      data => {},
+      data => {
+        this.cadastroSucesso = true;
+        this.projeto = new Projeto();
+        this.reload();
+        this.projetoForm.reset();
+      },
       error => {
         console.log(error);
+        this.cadastroSucesso = false;
     });
+  }
+
+  resetaForm(){
+    this.projeto = new Projeto();
+    this.cadastroSucesso = false;
+  }
+
+  reload(){
+    this.common.setSubject(true);
   }
 
   buscaEnderecoPorCep(){

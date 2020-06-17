@@ -1,3 +1,4 @@
+import { ListarComponent } from 'src/app/cliente/listar/listar.component';
 import { NgxViacepService } from '@brunoc/ngx-viacep';
 import { FornecedorModule } from './fornecedor/fornecedor.module';
 import { BrowserModule } from '@angular/platform-browser';

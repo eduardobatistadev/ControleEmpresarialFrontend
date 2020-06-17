@@ -1,3 +1,4 @@
+import { LoadingComponent } from './../../fragments/loading/loading.component';
 import { CommonService } from './../../shared/service/common.service';
 import { CommonModule } from '@angular/common';
 import { ListarComponent } from './../listar/listar.component';
@@ -8,7 +9,7 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
 
 
 @Component({
-  providers: [ListarComponent],
+  providers: [ListarComponent ],
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
@@ -21,6 +22,7 @@ export class CadastrarComponent implements OnInit {
   erroForm: string;
   cadastroSucesso: boolean;
   alterarSucesso: boolean;
+  loading: boolean;
 
   constructor(private fornecedorService: FornecedorService
             , private viacep: NgxViacepService
@@ -28,6 +30,7 @@ export class CadastrarComponent implements OnInit {
             , private common: CommonService) { }
 
   ngOnInit(): void {
+    this.loading = false;
     this.resetaForm();
     this.common.idSubject.subscribe(res => {
       if (res !== null) {
@@ -43,6 +46,7 @@ export class CadastrarComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.loading = true;
     this.fornecedorService.save(this.fornecedor).subscribe(
       data => {
         if (this.fornecedor.id) {
@@ -51,18 +55,33 @@ export class CadastrarComponent implements OnInit {
           this.cadastroSucesso = true;
         }
         this.fornecedor = new Fornecedor();
+        this.loading = false;
         this.reload();
         this.fornecedorForm.reset();
       },
-      error => {
+      errors => {
+        console.log(errors);
+        this.loading = false;
         this.cadastroSucesso = false;
+        this.trataErros(errors.status, errors.message);
       });
+  }
+
+  trataErros(codigo: number, message: string) {
+    if (codigo === 0) {
+      this.erroForm = 'O servidor está parado ou offline';
+    }
+    switch (codigo) {
+      case 0: this.erroForm = 'O servidor está parado ou offline'; break;
+      default: this.erroForm = 'Ops, algo deu muito errado, mensagem de erro: ' + message; break;
+    }
   }
 
   resetaForm() {
     this.fornecedor = new Fornecedor();
     this.cadastroSucesso = false;
     this.alterarSucesso = false;
+    this.loading = false;
   }
 
   reload() {

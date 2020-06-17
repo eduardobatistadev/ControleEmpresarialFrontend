@@ -126,3 +126,12 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+<div *ngIf="loading" class="col-lg-12 mx-auto text-center mt-3">
+<app-loading></app-loading>
+</div>
+<div *ngIf="erroForm" class="alert alert-danger mt-3" role="alert">
+  {{erroForm}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

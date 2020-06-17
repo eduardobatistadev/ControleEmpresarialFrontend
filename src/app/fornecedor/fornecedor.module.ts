@@ -1,3 +1,5 @@
+import { SharedModule } from './../shared/shared.module';
+import { LoadingComponent } from './../fragments/loading/loading.component';
 import { NgxViacepService } from '@brunoc/ngx-viacep';
 import { FornecedorService } from './../shared/service/fornecedor.service';
 import { NgModule } from '@angular/core';
@@ -10,7 +12,7 @@ import { ListarComponent } from './listar/listar.component';
 @NgModule({
   declarations: [HomeComponent, CadastrarComponent, ListarComponent],
   imports: [
-    CommonModule, FormsModule
+    CommonModule, FormsModule, SharedModule
   ],
   providers: [ FornecedorService, NgxViacepService ]
 })

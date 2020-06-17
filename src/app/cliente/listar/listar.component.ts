@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { CommonService } from 'src/app/shared/service/common.service';
 export class ListarComponent implements OnInit {
 
   clientes: Cliente[];
+  sortedByName: boolean;
 
 
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
@@ -23,6 +24,26 @@ export class ListarComponent implements OnInit {
     this.buscarTodos();
   }
 
+  buscarDados() {
+    this.clienteService.findAll().subscribe(data => {
+      this.clientes = data.reverse();
+    });
+  }
+
+  dados() {
+    this.clientes.sort((a, b) => {
+      if (a.nome.toLocaleUpperCase() < b.nome.toLocaleUpperCase()) { return -1; }
+      if (a.nome.toLocaleUpperCase() > b.nome.toLocaleUpperCase()) { return 1; }
+      return 0;
+    });
+    this.sortedByName = true;
+  }
+
+  reverse() {
+    this.clientes.reverse();
+    this.sortedByName = false;
+  }
+
   buscarTodos(): void{
     this.clienteService.findAll().subscribe(data => {
         this.clientes = data;
@@ -32,5 +53,10 @@ export class ListarComponent implements OnInit {
   reload() {
     location.reload();
   }
+
+  edit(id: number) {
+    this.common.setEditId(id);
+  }
+
 
 }

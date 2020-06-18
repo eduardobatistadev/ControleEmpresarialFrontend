@@ -1,21 +1,26 @@
 <form (ngSubmit)="onSubmit()" #projetoForm="ngForm">
   <div class="row col-lg-10 m-auto">
+
     <div class="form-group col-lg-3">
       <label for="nome">Nome do Projeto<span class="text-danger">*</span></label>
-      <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" class="form-control">
+      <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" #nome="ngModel" class="form-control" required>
+      <span class="small text-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">Nome do projeto é obrigatório</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="data_inicio">Cliente<span class="text-danger">*</span></label>
-      <select name="cliente" [(ngModel)]="projeto.cliente" class="form-control">
+      <select name="cliente" [(ngModel)]="projeto.cliente" #cliente="ngModel" class="form-control" required>
         <option *ngFor="let cliente of clientes"  [ngValue]="cliente">{{cliente.nome}}</option>
+      
       </select>
+      <span class="small text-danger" *ngIf="nome.invalid && (cliente.dirty || cliente.touched)">Selecione um Cliente</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="data_inicio">Data Início<span class="text-danger">*</span></label>
-      <input name="data_inicio" id="data_inicio" type="date" [(ngModel)]="projeto.dt_inicio" class="form-control">
+      <input name="data_inicio" id="data_inicio" type="date" #data="ngModel" [(ngModel)]="projeto.dt_inicio" class="form-control" required>
+      <span class="small text-danger" *ngIf="data.invalid && (data.dirty || data.touched)">Data de início é obrigatória</span>
     </div>
     <div class="form-group col-lg-3">
-      <label for="data_fim">Data fim<span class="text-danger">*</span></label>
+      <label for="data_fim">Data fim</label>
       <input name="data_fim" id="data_fim" type="date" [(ngModel)]="projeto.dt_fim" class="form-control">
     </div>
     <div class="form-group col-lg-12">
@@ -32,16 +37,18 @@
     </div>
     <div class="form-group col-lg-3">
       <label for="cep">Cep<span class="text-danger">*</span></label>
-      <input (blur)="buscaEnderecoPorCep()" name="cep" id="cep" type="text" [(ngModel)]="projeto.cep"
-        class="form-control">
+      <input (blur)="buscaEnderecoPorCep()" name="cep" id="cep" #cep="ngModel" type="text" [(ngModel)]="projeto.cep"
+        class="form-control" required>
+        <span class="small text-danger" *ngIf="cep.invalid && (cep.dirty || cep.touched)">Cep é obrigatório</span>
       <span class="small text-danger" *ngIf="erroEndereco">{{erroEndereco}}</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="num">Numero<span class="text-danger">*</span></label>
-      <input name="num" id="num" type="text" [(ngModel)]="projeto.numeroCasa" class="form-control">
+      <input name="num" id="num" type="text" #numero="ngModel" [(ngModel)]="projeto.numeroCasa" class="form-control"  required>
+      <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Número é obrigatório</span>
     </div>
     <div class="form-group col-lg-7">
-      <label for="compl">Complemento<span class="text-danger">*</span></label>
+      <label for="compl">Complemento</label>
       <input name="compl" id="compl" type="text" [(ngModel)]="projeto.complemento" class="form-control">
     </div>
     <div class="form-group col-lg-5">

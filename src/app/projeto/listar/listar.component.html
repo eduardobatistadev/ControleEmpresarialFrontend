@@ -19,7 +19,8 @@
     <tbody>
       <tr *ngFor="let tempProjeto of projetos">
         <th scope="row">{{tempProjeto.id}}</th>
-        <td><img [src]="this.getFirstImg(tempProjeto)" width="40" height="40" class="rounded"/></td>
+        <td class="text-center mx-auto" *ngIf="tempProjeto.img.length !== 0; else imgNotFound"><img [src]="this.getFirstImg(tempProjeto)" width="40" height="40" class="rounded"/></td>
+        <ng-template #imgNotFound> <td class="text-center text-danger my-0 py-0" style="font-size: 34px;"><i class="fas fa-image"></i></td></ng-template>
         <td>{{tempProjeto.nomeProjeto}}</td>
         <td>{{tempProjeto.dt_inicio}}</td>
         <td *ngIf="tempProjeto.cliente === null; else cliente">{{tempProjeto.cliente}}</td>

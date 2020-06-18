@@ -17,7 +17,7 @@ export class ListarComponent implements OnInit {
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
 
   ngOnInit(): void {
-    this.common.demoSubject.subscribe(res =>{
+    this.common.demoSubject.subscribe(res => {
       this.buscarTodos();
     });
     this.buscarTodos();

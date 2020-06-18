@@ -22,6 +22,7 @@ export class Projeto {
 
     constructor(){
       this.img = [];
+      this.fornecedores = [];
     }
 
     addImagem(img: string){

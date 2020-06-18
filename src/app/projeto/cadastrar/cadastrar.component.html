@@ -50,25 +50,56 @@
       <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Número é
         obrigatório</span>
     </div>
-    <div class="form-group col-lg-7">
+    <div class="form-group col-lg-3">
       <label for="compl">Complemento</label>
       <input name="compl" id="compl" type="text" [(ngModel)]="projeto.complemento" class="form-control">
     </div>
-    <div class="form-group col-lg-5">
+    <div class="form-group col-lg-4">
       <label for="bairro">Bairro<span class="text-danger">*</span></label>
       <input name="bairro" id="bairro" type="text" [(ngModel)]="projeto.bairro" readonly class="form-control">
     </div>
-    <div class="form-group col-lg-6">
+    <div class="form-group col-lg-8">
       <label for="rua">Rua<span class="text-danger">*</span></label>
       <input name="rua" id="rua" type="text" [(ngModel)]="projeto.rua" readonly class="form-control">
     </div>
-    <div class="form-group col-lg-3">
+    <div class="form-group col-lg-6">
       <label for="cidade">Cidade<span class="text-danger">*</span></label>
       <input name="cidade" id="cidade" type="text" [(ngModel)]="projeto.cidade" readonly class="form-control">
     </div>
-    <div class="form-group col-lg-3">
+    <div class="form-group col-lg-6">
       <label for="estado">Estado<span class="text-danger">*</span></label>
       <input name="estado" id="estado" type="text" [(ngModel)]="projeto.estado" readonly class="form-control">
+    </div>
+    <div class="form-group col-lg-12">
+      <label for="data_inicio">Fornecedor<span class="text-danger">*</span></label>
+      <select name="fornecedor" [(ngModel)]="fornecedorModel" (ngModelChange)="addFornecedor($event)"
+        #fornecedor="ngModel" class="form-control" required>
+        <option *ngFor="let fornecedor of fornecedores" [ngValue]="fornecedor">{{fornecedor.nomeEmpresa}}</option>
+
+      </select>
+      <span class="small text-danger" *ngIf="fornecedor.invalid && (fornecedor.dirty || fornecedor.touched)">Selecione
+        um
+        Fornecedor</span>
+    </div>
+    <div class="form-group col-lg-12">
+      <h5 class="text-center">Fornecedores do Projeto</h5>
+      <hr />
+      <div *ngIf="projeto.fornecedores.length !== 0; else fornecedoresEmpty" class="row justify-content-center">
+        <table class="table table-borderless col-lg-6">
+          <tbody>
+            <tr class="text-center" *ngFor="let fornecedor of projeto.fornecedores">
+              <td>{{fornecedor.nomeEmpresa}}</td>
+              <td><a class="pl-auto remove" (click)="removeFornecedor(fornecedor)"><i
+                    class="fas fa-times-circle"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #fornecedoresEmpty>
+        <div class="text-center text-danger col-lg-12">
+          Ainda não há fornecedores designados para este projeto!
+        </div>
+      </ng-template>
     </div>
     <div class="col-lg-12">
       <label for="img">Imagens do Projeto<span class="text-danger">*</span></label>

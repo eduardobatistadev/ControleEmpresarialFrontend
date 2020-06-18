@@ -1,32 +1,32 @@
 <form (ngSubmit)="onSubmit()" #clienteForm="ngForm">
 <div class="row col-lg-10 m-auto">
     <div class="form-group col-lg-4">
-      <label for="nome"><i class="fas fa-user-tie"></i> Nome<span class="text-danger">*</span></label>
+      <label for="nome">Nome<span class="text-danger">*</span></label>
       <input name="nome" type="text" [(ngModel)]="cliente.nome" #nome="ngModel" class="form-control" required>
       <span class="small text-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">Nome é obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
-      <label for="cpf"><i class="fas fa-id-card"></i> CPF<span class="text-danger">*</span></label>
+      <label for="cpf">CPF<span class="text-danger">*</span></label>
       <input name="cpf" id="cpf" type="text" [(ngModel)]="cliente.cpf" #cpf="ngModel" class="form-control" required>
       <span class="small text-danger" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">CPF é obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
-        <label for="dt_nasc"><i class="fas fa-calendar-plus"></i> Data de Nascimento<span class="text-danger">*</span></label>
+        <label for="dt_nasc">Data de Nascimento<span class="text-danger">*</span></label>
         <input name="dt_nasc" id="dt_nasc" type="date" [(ngModel)]="cliente.dt_nasc" #dt_nasc="ngModel" class="form-control" required>
         <span class="small text-danger" *ngIf="cpf.invalid && (dt_nasc.dirty || dt_nasc.touched)">Data de nasc obrigatório</span>
       </div>
     <div class="form-group col-lg-4">
-        <label for="email"><i class="fas fa-envelope-open-text"></i> Email<span class="text-danger">*</span></label>
+        <label for="email">Email<span class="text-danger">*</span></label>
         <input name="email" id="email" type="email" [(ngModel)]="cliente.email" #email="ngModel" class="form-control" required>
         <span class="small text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Email obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
-        <label for="cel"><i class="fas fa-mobile"></i> Celular<span class="text-danger">*</span></label>
+        <label for="cel">Celular<span class="text-danger">*</span></label>
         <input name="cel" id="cel" type="tel" [(ngModel)]="cliente.celular" #cel="ngModel" class="form-control" required>
         <span class="small text-danger" *ngIf="cel.invalid && (cel.dirty || cel.touched)">Cel obrigatório</span>
     </div>
     <div class="form-group col-lg-4">
-        <label  for="tel"><i class="fas fa-phone-alt"></i> Telefone Fixo</label>
+        <label  for="tel">Telefone Fixo</label>
         <input name="tel" id="tel" type="tel" [(ngModel)]="cliente.telefoneFixo" class="form-control">
     </div>
     <div class="form-group col-lg-2">

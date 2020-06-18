@@ -12,6 +12,7 @@ import { ProjetoService } from 'src/app/shared/service/projeto.service';
 export class ListarComponent implements OnInit {
 
   projetos: Projeto[];
+  sortedByName: boolean;
 
   constructor(private projetoService: ProjetoService, route: Router, private common: CommonService) { }
 
@@ -28,6 +29,26 @@ export class ListarComponent implements OnInit {
       this.projetos = projeto;
       console.log(this.projetos);
     });
+  }
+
+  buscarDados() {
+    this.projetoService.findAll().subscribe(data => {
+      this.projetos = data.reverse();
+    });
+  }
+
+  dados() {
+    this.projetos.sort((a, b) => {
+      if (a.nomeProjeto.toLocaleUpperCase() < b.nomeProjeto.toLocaleUpperCase()) { return -1; }
+      if (a.nomeProjeto.toLocaleUpperCase() > b.nomeProjeto.toLocaleUpperCase()) { return 1; }
+      return 0;
+    });
+    this.sortedByName = true;
+  }
+
+  reverse() {
+    this.projetos.reverse();
+    this.sortedByName = false;
   }
 
   reload() {

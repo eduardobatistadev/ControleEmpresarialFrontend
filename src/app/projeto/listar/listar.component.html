@@ -1,13 +1,19 @@
-<table class="table table-hover table-sm table-striped">
+<div class="table-responsive rounded">
+<table class="table table-hover table-lg table-striped mb-3 py-0 rounded">
     <thead>
-      <tr>
+      <tr class="table-warning">
         <th scope="col">#</th>
-        <th scope="col">Projeto</th>
-        <th scope="col">Data Início</th>
-        <th scope="col">Cliente</th>
-        <th scope="col">Valor</th>
-        <th scope="col" colspan="3">Opções</th>
+        <th scope="col"><i class="fas fa-project-diagram"></i> Projeto <a class="ml-5 sort" *ngIf="!sortedByName; else reverses"
+          (click)="dados()"><i class="fas fa-sort-alpha-up"></i></a>
+         <ng-template #reverses><a class="ml-5 sort" (click)="reverse()"><i class="fas fa-sort-alpha-down"></i></a>
+         </ng-template>
+        </th>
+        <th scope="col"><i class="far fa-calendar-plus"></i> Data Início</th>
+        <th scope="col"><i class="fas fa-user"></i> Cliente</th>
+        <th scope="col"><i class="fas fa-dollar-sign"></i> Valor</th>
+        <th scope="col" colspan="3"><i class="fas fa-cogs"> </i> Opções</th>
       </tr>
+
     </thead>
     <tbody>
       <tr *ngFor="let tempProjeto of projetos">
@@ -17,10 +23,11 @@
         <td *ngIf="tempProjeto.cliente === null; else cliente">{{tempProjeto.cliente}}</td>
         <ng-template #cliente><td>{{tempProjeto.cliente.nome}}</td></ng-template>
         <td>{{tempProjeto.valorTotal}}</td>
-        <td><a class="text-success" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a></td>
-        <td><a class="text-primary" href=""><i class="fas fa-user-cog"></i></a></td>
-        <td><a class="text-danger" href=""><i class="fas fa-trash-alt"></i></a></td>
+        <td><a class="text-success mr-2" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a>
+        <a class="text-primary mx-2" href=""><i class="fas fa-user-cog"></i></a>
+        <a class="text-danger ml-2" href=""><i class="fas fa-trash-alt"></i></a>
+        </td>
       </tr>
     </tbody>
   </table>
-
+</div>

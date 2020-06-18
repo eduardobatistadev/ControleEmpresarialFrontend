@@ -114,7 +114,9 @@
 
     <div class="col-lg-12 ml-1 row">
       <p *ngIf="projeto.img.length !== 0">Preview:</p>
-      <div *ngFor="let img of projeto.img" class="col-lg-3">
+      <div *ngFor="let img of projeto.img" class="col-lg-3 text-center">
+        <a class="remove text-center" (click)="removeImagem(img)"><i
+          class="fas fa-times-circle"></i></a>
         <img class="mx-auto py-2 rounded" [src]="img" height="200" width="200">
       </div>
     </div>

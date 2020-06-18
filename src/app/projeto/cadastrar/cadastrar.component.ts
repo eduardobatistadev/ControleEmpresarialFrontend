@@ -71,6 +71,10 @@ export class CadastrarComponent implements OnInit {
     this.projeto.fornecedores = this.projeto.fornecedores.filter( element => element.id !== fornecedor.id);
   }
 
+  removeImagem(imagem){
+    this.projeto.img = this.projeto.img.filter(element => element !== imagem);
+  }
+
   buscaListaClientes(){
     this.clienteService.findAll().subscribe( data => {
       this.clientes = data;
@@ -111,6 +115,8 @@ export class CadastrarComponent implements OnInit {
   reload(){
     this.common.setSubject(true);
   }
+
+
 
   buscaEnderecoPorCep(){
     this.viacep.buscarPorCep(this.projeto.cep).then( ( endereco: Endereco ) => {

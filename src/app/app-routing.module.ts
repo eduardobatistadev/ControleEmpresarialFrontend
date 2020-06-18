@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClienteRouting } from './cliente/cliente-routing.module';
 import { AppComponent } from './app.component';
 import { ProjetoRouting} from './projeto/projeto-routing.module';
+import { GaleriaRouting } from './projeto/galeria-routing.module copy';
 
 
 const routes: Routes = [
   ...FornecedorRouting,
   ...ClienteRouting,
-  ...ProjetoRouting
+  ...ProjetoRouting,
+  ...GaleriaRouting
 ];
 
 @NgModule({

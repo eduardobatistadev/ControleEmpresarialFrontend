@@ -1,6 +1,7 @@
 <form (ngSubmit)="onSubmit()" #clienteForm="ngForm">
 <div class="row col-lg-10 m-auto">
     <div class="form-group col-lg-4">
+
       <label for="nome">Nome<span class="text-danger">*</span></label>
       <input name="nome" type="text" [(ngModel)]="cliente.nome" #nome="ngModel" class="form-control" required>
       <span class="small text-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">Nome é obrigatório</span>
@@ -46,6 +47,7 @@
         <label for="bairro">Bairro</label>
         <input name="bairro" id="bairro" type="text" [(ngModel)]="cliente.bairro" readonly class="form-control">
     </div>
+
     <div class="form-group col-lg-4">
         <label for="cidade">Cidade</label>
         <input name="cidade" id="cidade" type="text" [(ngModel)]="cliente.cidade" readonly class="form-control">
@@ -58,6 +60,8 @@
         <label for="compl">Complemento</label>
         <input name="compl" id="compl" type="text" [(ngModel)]="cliente.complemento" class="form-control">
     </div>
+
+    <div class="col-lg-12" *ngIf="!cliente.id;else alterar">
     <div *ngIf="clienteForm.invalid; else botaoLiberado" class="col-lg-12">
         <button disabled class="btn btn-secondary btn-block">Cadastrar Cliente</button>
       </div>
@@ -66,11 +70,44 @@
         <button class="btn btn-success btn-block">Cadastrar Cliente</button>
         </div>
     </ng-template>
+    </div>
+
+    <ng-template #alterar>
+      <div *ngIf="clienteForm.invalid; else botaoLiberado" class="col-lg-6">
+        <button disabled class="btn btn-secondary btn-block">Alterar Cliente</button>
+      </div>
+      <div class="col-lg-6">
+        <button (click)="cancelar()" class="btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <ng-template #botaoLiberado>
+        <div class="col-lg-6">
+          <button class="btn btn-success btn-block">Alterar Cliente</button>
+        </div>
+      </ng-template>
+    </ng-template>
+
   </div>
 </form>
 
 <div *ngIf="cadastroSucesso" class="alert alert-success mt-3" role="alert">
     Cliente cadastrado com sucesso!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="alterarSucesso" class="alert alert-success mt-3" role="alert">
+    Cliente alterado com sucesso!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="loading" class="col-lg-12 mx-auto text-center mt-3">
+  <app-loading></app-loading>
+  </div>
+  
+  <div *ngIf="erroForm" class="alert alert-danger mt-3" role="alert">
+    {{erroForm}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

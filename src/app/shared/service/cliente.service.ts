@@ -25,12 +25,12 @@ export class ClienteService {
      return this.http.get<Cliente>(`${this.url}/${id}`);
    }
 
-   public deleteById(id: number): void{
-    this.http.delete(`${this.url}/${id}`).subscribe();
+   public deleteById(id: number): Observable<any>{
+    return this.http.delete(`${this.url}/${id}`);
    }
 
-   public update(fornecedor: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(this.url, fornecedor);
+   public update(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(this.url, cliente);
   }
 
 }

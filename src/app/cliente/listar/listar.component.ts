@@ -14,7 +14,6 @@ export class ListarComponent implements OnInit {
   clientes: Cliente[];
   sortedByName: boolean;
 
-
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
 
   ngOnInit(): void {
@@ -56,5 +55,17 @@ export class ListarComponent implements OnInit {
 
   edit(id: number) {
     this.common.setEditId(id);
+  }
+
+  delete(id: number, nome: string) {
+    if (confirm('Certeza que deseja excluir o cliente ' + nome)) {
+      this.clienteService.deleteById(id).subscribe(data => {
+        this.buscarDados();
+      }, error => {
+        console.log(error);
+      });
+    } else {
+
+    }
   }
 }

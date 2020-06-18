@@ -46,3 +46,87 @@
   </table>
 </div>
 
+<div *ngFor="let f of clientes" class="modal fade" [attr.id]="'f'+f.id" tabindex="-1" role="dialog"
+  [attr.aria-labelledby]="f.id" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center mx-auto border-0 mb-0 pb-0">
+        <h5 class="modal-title text-center" [id]="f.id">{{f.nome}}</h5>
+      </div>
+      <div class="modal-body text-center py-0 my-0">
+        <span class="small text-danger text-center py-0 my-0">*campos em branco não são exibidos*</span>
+        <table class="table table-bordered rounded">
+          <tbody>
+            <tr>
+              <th class="table-warning border-warning" scope="row">Nome</th>
+              <td>{{f.nome}}</td>
+            </tr>
+            <tr *ngIf="f.dt_nasc !== null">
+              <th class="table-warning border-warning" scope="row">Dt_Nasc</th>
+              <td>{{f.dt_nasc}}</td>
+            </tr>
+            <tr>
+              <th class="table-warning border-warning" scope="row">e-mail</th>
+              <td>{{f.email}}</td>
+            </tr>
+            <tr>
+              <th class="table-warning border-warning" scope="row">Celular</th>
+              <td>{{f.celular}}</td>
+            </tr>
+            <tr *ngIf="f.telefoneFixo !== null">
+              <th class="table-warning border-warning" scope="row">Telefone Fixo</th>
+              <td>{{f.telefoneFixo}}</td>
+            </tr>
+            <tr *ngIf="f.cpf !== null">
+              <th class="table-warning border-warning" scope="row">CPF</th>
+              <td>{{f.cpf}}</td>
+            </tr>
+            <tr>
+              <th class="table-warning border-warning" scope="row">CEP</th>
+              <td>{{f.cep}}</td>
+            </tr>
+            <tr>
+              <th class="table-warning border-warning" scope="row">Endereço</th>
+              <td>{{f.rua}}, {{f.numeroCasa}}, {{f.complemento}} </td>
+            </tr>
+            <tr>
+              <th class="table-warning border-warning" scope="row">Bairro, Cidade - UF</th>
+              <td>{{f.bairro}}, {{f.cidade}} - {{f.estado}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr/>
+        <h5>Projetos</h5>
+        <div *ngIf="f.projetos.length !== 0;else mensagemNaoProjeto">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr class="table-warning">
+                <th scope="row">Nome</th>
+                <th scope="row">Data Inicio</th>
+                <th scope="row">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let projeto of f.projetos">
+                <th>{{projeto.nomeProjeto}}</th>
+                <td>{{projeto.dt_inicio}}</td>
+                <td>{{projeto.estado}}</td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #mensagemNaoProjeto>
+          <div class="mx-auto text-center">
+            <p class="text-danger small">Não há projetos cadastrados para esse fornecedor</p>
+          </div>
+        </ng-template>
+      </div>
+      <div class="modal-footer border-0 mt-0 pt-0">
+        <button type="button" class="btn btn-secondary btn-block " data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

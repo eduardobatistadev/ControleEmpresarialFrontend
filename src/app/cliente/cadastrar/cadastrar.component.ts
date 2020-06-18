@@ -3,7 +3,9 @@ import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { NgxViacepService, Endereco, ErroCep, ErrorValues  } from '@brunoc/ngx-viacep';
 import { CommonService } from 'src/app/shared/service/common.service';
+import { CommonModule } from '@angular/common';
 import { ListarComponent } from 'src/app/cliente/listar/listar.component';
+import { LoadingComponent } from './../../fragments/loading/loading.component';
 
 @Component({
   selector: 'app-cadastrar-cliente',
@@ -17,33 +19,65 @@ export class CadastrarComponent implements OnInit {
   erroEndereco: string;
   erroForm: string;
   cadastroSucesso: boolean;
+  alterarSucesso: boolean;
+  loading: boolean;
 
   constructor(private clienteService: ClienteService,
               private viacep: NgxViacepService,
               private common: CommonService) { }
 
   ngOnInit(): void {
+    this.loading = false;
     this.resetaForm();
+    this.common.idSubject.subscribe(res => {
+      if (res !== null) {
+        this.buscarPorId(res);
+      }
+    });
+  }
+  buscarPorId(id: number) {
+    this.clienteService.findById(id).subscribe(data => {
+      this.cliente = data;
+    });
   }
 
   onSubmit(): void {
-    console.log(this.cliente);
+    this.loading = true;
     this.clienteService.save(this.cliente).subscribe(
       data => {
-        this.cadastroSucesso = true;
+        if (this.cliente.id) {
+          this.alterarSucesso = true;
+        } else {
+          this.cadastroSucesso = true;
+        }
         this.cliente = new Cliente();
+        this.loading = false;
         this.reload();
         this.clienteForm.reset();
       },
-      error => {
-        console.log(error);
+      errors => {
+        console.log(errors);
+        this.loading = false;
         this.cadastroSucesso = false;
-    });
+        this.trataErros(errors.status, errors.message);
+      });
+  }
+
+  trataErros(codigo: number, message: string) {
+    if (codigo === 0) {
+      this.erroForm = 'O servidor está parado ou offline';
+    }
+    switch (codigo) {
+      case 0: this.erroForm = 'O servidor está parado ou offline'; break;
+      default: this.erroForm = 'Ops, algo deu muito errado, mensagem de erro: ' + message; break;
+    }
   }
 
   resetaForm(){
     this.cliente = new Cliente();
     this.cadastroSucesso = false;
+    this.alterarSucesso = false;
+    this.loading = false;
   }
 
   reload(){
@@ -76,6 +110,12 @@ export class CadastrarComponent implements OnInit {
           break;
       }
      });
+  }
+
+  cancelar() {
+    this.resetaForm();
+    this.clienteForm.reset();
+    this.common.setEditId(null);
   }
 
 }

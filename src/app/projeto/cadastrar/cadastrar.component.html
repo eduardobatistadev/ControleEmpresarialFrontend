@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" #projetoForm="ngForm">
   <div class="row col-lg-10 m-auto">
-
+    <input name="id" type="hidden" [(ngModel)]="projeto.id">
     <div class="form-group col-lg-3">
       <label for="nome">Nome do Projeto<span class="text-danger">*</span></label>
       <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" #nome="ngModel" class="form-control"

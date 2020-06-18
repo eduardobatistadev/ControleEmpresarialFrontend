@@ -25,20 +25,46 @@ export class CadastrarComponent implements OnInit {
   cadastroSucesso: boolean;
   clientes: Cliente[];
   fornecedores: Fornecedor[];
+  auxList: Fornecedor[];
   fornecedorModel = new Fornecedor();
 
   constructor(private projetoService: ProjetoService,
-              private viacep: NgxViacepService,
-              private common: CommonService,
-              private clienteService: ClienteService,
-              private fornecedorService: FornecedorService) { }
+    private viacep: NgxViacepService,
+    private common: CommonService,
+    private clienteService: ClienteService,
+    private fornecedorService: FornecedorService) { }
 
   ngOnInit(): void {
+    this.auxList = [];
     this.buscaListaClientes();
     this.buscaListaFornecedores();
     this.resetaForm();
+    this.common.idProjeto.subscribe(res => {
+      if (res !== null) {
+        this.buscaProjetoPorId(res);
+      }
+    });
     this.fornecedorModel.id = 0;
     this.fornecedorModel.nomeEmpresa = 'selecione...';
+  }
+
+  resolveListas() {
+    console.log(this.fornecedores);
+
+    this.fornecedores.forEach( f => this.projeto.fornecedores.forEach(e =>
+      this.fornecedores.filter(f2 => f2.id !== e.id) ));
+    console.log(this.fornecedores);
+  }
+
+  buscaProjetoPorId(id: number) {
+    console.log(this.auxList);
+    this.fornecedores = this.auxList;
+    this.projetoService.findById(id).subscribe(data => {
+      console.log(data);
+      this.projeto = data;
+      this.resolveListas();
+    });
+
   }
 
   onSubmit(): void {
@@ -55,44 +81,49 @@ export class CadastrarComponent implements OnInit {
       error => {
         console.log(error);
         this.cadastroSucesso = false;
-    });
+      });
   }
 
-  addFornecedor(fornecedor){
+  addFornecedor(fornecedor) {
     console.log(fornecedor);
     this.projeto.fornecedores.push(fornecedor);
-    this.fornecedores = this.fornecedores.filter( (element) => element.id !== fornecedor.id );
+    this.fornecedores = this.fornecedores.filter((element) => element.id !== fornecedor.id);
     console.log(this.fornecedores);
   }
 
-  removeFornecedor(fornecedor){
+  removeFornecedor(fornecedor) {
     this.fornecedorModel = new Fornecedor();
     this.fornecedores.push(fornecedor);
-    this.projeto.fornecedores = this.projeto.fornecedores.filter( element => element.id !== fornecedor.id);
+    this.projeto.fornecedores = this.projeto.fornecedores.filter(element => element.id !== fornecedor.id);
   }
 
-  removeImagem(imagem){
+  removeImagem(imagem) {
     this.projeto.img = this.projeto.img.filter(element => element !== imagem);
   }
 
-  buscaListaClientes(){
-    this.clienteService.findAll().subscribe( data => {
+  buscaListaClientes() {
+    this.clienteService.findAll().subscribe(data => {
       this.clientes = data;
     });
   }
 
-  buscaListaFornecedores(){
-    this.fornecedorService.findAll().subscribe( data => {
+  buscaListaFornecedores() {
+    this.fornecedorService.findAll().subscribe(data => {
       this.fornecedores = data;
+      this.auxList = this.fornecedores;
     });
   }
 
-  resetaForm(){
+  resetaForm() {
     this.projeto = new Projeto();
     this.cadastroSucesso = false;
     this.fornecedorModel = new Fornecedor();
     this.buscaListaFornecedores();
     this.projeto.fornecedores = [];
+  }
+
+  addImagem(img: string){
+    this.projeto.img.push(img);
   }
 
   preview(files: any) {
@@ -107,26 +138,26 @@ export class CadastrarComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
-      this.projeto.addImagem(reader.result.toString());
+      this.addImagem(reader.result.toString());
     };
     console.log(this.projeto);
   }
 
-  reload(){
+  reload() {
     this.common.setSubject(true);
   }
 
 
 
-  buscaEnderecoPorCep(){
-    this.viacep.buscarPorCep(this.projeto.cep).then( ( endereco: Endereco ) => {
+  buscaEnderecoPorCep() {
+    this.viacep.buscarPorCep(this.projeto.cep).then((endereco: Endereco) => {
       this.projeto.bairro = endereco.bairro;
       this.projeto.cidade = endereco.localidade;
       this.projeto.rua = endereco.logradouro;
       this.projeto.estado = endereco.uf;
       this.erroEndereco = '';
-     }).catch( (error: ErroCep) => {
-      switch (error.getCode()){
+    }).catch((error: ErroCep) => {
+      switch (error.getCode()) {
         case ErrorValues.CEP_NAO_ENCONTRADO:
           this.erroEndereco = 'CEP informado não existe';
           break;
@@ -143,7 +174,7 @@ export class CadastrarComponent implements OnInit {
           this.erroEndereco = 'CEP informado é muito longo, um cep deve conter 8 digitos';
           break;
       }
-     });
+    });
   }
 
 

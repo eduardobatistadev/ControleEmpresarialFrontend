@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private common: CommonService) { }
 
   ngOnInit(): void {
-    this.common.idSubject.subscribe(res => {
+    this.common.idCliente.subscribe(res => {
     if (res !== null) {
       this.abreForm();
     } else {

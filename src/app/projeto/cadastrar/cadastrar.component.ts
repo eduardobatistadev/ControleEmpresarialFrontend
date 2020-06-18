@@ -1,3 +1,6 @@
+import { FornecedorModule } from './../../fornecedor/fornecedor.module';
+import { Fornecedor } from './../../shared/model/fornecedor';
+import { FornecedorService } from './../../shared/service/fornecedor.service';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -21,15 +24,21 @@ export class CadastrarComponent implements OnInit {
   erroForm: string;
   cadastroSucesso: boolean;
   clientes: Cliente[];
+  fornecedores: Fornecedor[];
+  fornecedorModel = new Fornecedor();
 
   constructor(private projetoService: ProjetoService,
               private viacep: NgxViacepService,
               private common: CommonService,
-              private clienteService: ClienteService) { }
+              private clienteService: ClienteService,
+              private fornecedorService: FornecedorService) { }
 
   ngOnInit(): void {
     this.buscaListaClientes();
+    this.buscaListaFornecedores();
     this.resetaForm();
+    this.fornecedorModel.id = 0;
+    this.fornecedorModel.nomeEmpresa = 'selecione...';
   }
 
   onSubmit(): void {
@@ -41,11 +50,25 @@ export class CadastrarComponent implements OnInit {
         this.projeto = new Projeto();
         this.reload();
         this.projetoForm.reset();
+        this.resetaForm();
       },
       error => {
         console.log(error);
         this.cadastroSucesso = false;
     });
+  }
+
+  addFornecedor(fornecedor){
+    console.log(fornecedor);
+    this.projeto.fornecedores.push(fornecedor);
+    this.fornecedores = this.fornecedores.filter( (element) => element.id !== fornecedor.id );
+    console.log(this.fornecedores);
+  }
+
+  removeFornecedor(fornecedor){
+    this.fornecedorModel = new Fornecedor();
+    this.fornecedores.push(fornecedor);
+    this.projeto.fornecedores = this.projeto.fornecedores.filter( element => element.id !== fornecedor.id);
   }
 
   buscaListaClientes(){
@@ -54,9 +77,18 @@ export class CadastrarComponent implements OnInit {
     });
   }
 
+  buscaListaFornecedores(){
+    this.fornecedorService.findAll().subscribe( data => {
+      this.fornecedores = data;
+    });
+  }
+
   resetaForm(){
     this.projeto = new Projeto();
     this.cadastroSucesso = false;
+    this.fornecedorModel = new Fornecedor();
+    this.buscaListaFornecedores();
+    this.projeto.fornecedores = [];
   }
 
   preview(files: any) {

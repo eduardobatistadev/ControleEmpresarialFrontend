@@ -3,21 +3,26 @@
 
     <div class="form-group col-lg-3">
       <label for="nome">Nome do Projeto<span class="text-danger">*</span></label>
-      <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" #nome="ngModel" class="form-control" required>
-      <span class="small text-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">Nome do projeto é obrigatório</span>
+      <input name="nome" id="nome" type="text" [(ngModel)]="projeto.nomeProjeto" #nome="ngModel" class="form-control"
+        required>
+      <span class="small text-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">Nome do projeto é
+        obrigatório</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="data_inicio">Cliente<span class="text-danger">*</span></label>
       <select name="cliente" [(ngModel)]="projeto.cliente" #cliente="ngModel" class="form-control" required>
-        <option *ngFor="let cliente of clientes"  [ngValue]="cliente">{{cliente.nome}}</option>
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{cliente.nome}}</option>
 
       </select>
-      <span class="small text-danger" *ngIf="nome.invalid && (cliente.dirty || cliente.touched)">Selecione um Cliente</span>
+      <span class="small text-danger" *ngIf="nome.invalid && (cliente.dirty || cliente.touched)">Selecione um
+        Cliente</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="data_inicio">Data Início<span class="text-danger">*</span></label>
-      <input name="data_inicio" id="data_inicio" type="date" #data="ngModel" [(ngModel)]="projeto.dt_inicio" class="form-control" required>
-      <span class="small text-danger" *ngIf="data.invalid && (data.dirty || data.touched)">Data de início é obrigatória</span>
+      <input name="data_inicio" id="data_inicio" type="date" #data="ngModel" [(ngModel)]="projeto.dt_inicio"
+        class="form-control" required>
+      <span class="small text-danger" *ngIf="data.invalid && (data.dirty || data.touched)">Data de início é
+        obrigatória</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="data_fim">Data fim</label>
@@ -28,10 +33,6 @@
       <textarea name="descricao" id="descricao" [(ngModel)]="projeto.descricao" class="form-control"></textarea>
     </div>
     <div class="form-group col-lg-3">
-      <label for="img">Imagens do Projeto<span class="text-danger">*</span></label>
-      <input name="img" id="img" type="image" [(ngModel)]="projeto.img" class="form-control">
-    </div>
-    <div class="form-group col-lg-3">
       <label for="valorTotal">Valor</label>
       <input name="valorTotal" id="valorTotal" type="number" [(ngModel)]="projeto.valorTotal" class="form-control">
     </div>
@@ -39,13 +40,15 @@
       <label for="cep">Cep<span class="text-danger">*</span></label>
       <input (blur)="buscaEnderecoPorCep()" name="cep" id="cep" #cep="ngModel" type="text" [(ngModel)]="projeto.cep"
         class="form-control" required>
-        <span class="small text-danger" *ngIf="cep.invalid && (cep.dirty || cep.touched)">Cep é obrigatório</span>
+      <span class="small text-danger" *ngIf="cep.invalid && (cep.dirty || cep.touched)">Cep é obrigatório</span>
       <span class="small text-danger" *ngIf="erroEndereco">{{erroEndereco}}</span>
     </div>
     <div class="form-group col-lg-3">
       <label for="num">Numero<span class="text-danger">*</span></label>
-      <input name="num" id="num" type="text" #numero="ngModel" [(ngModel)]="projeto.numeroCasa" class="form-control"  required>
-      <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Número é obrigatório</span>
+      <input name="num" id="num" type="text" #numero="ngModel" [(ngModel)]="projeto.numeroCasa" class="form-control"
+        required>
+      <span class="small text-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">Número é
+        obrigatório</span>
     </div>
     <div class="form-group col-lg-7">
       <label for="compl">Complemento</label>
@@ -67,6 +70,24 @@
       <label for="estado">Estado<span class="text-danger">*</span></label>
       <input name="estado" id="estado" type="text" [(ngModel)]="projeto.estado" readonly class="form-control">
     </div>
+    <div class="col-lg-12">
+      <label for="img">Imagens do Projeto<span class="text-danger">*</span></label>
+    </div>
+    <div class="input-group col-lg-12">
+      <div class="custom-file mb-3">
+        <input type="file" #file accept='image/*' [(ngModel)]="imagePath" (change)="preview(file.files)" type="file"
+          name="file" class="custom-file-input" id="imgInput" aria-describedby="img">
+        <label class="custom-file-label" for="img">Escolha uma imagem...</label>
+      </div>
+    </div>
+
+    <div class="col-lg-12 ml-1 row">
+      <p *ngIf="projeto.img.length !== 0">Preview:</p>
+      <div *ngFor="let img of projeto.img" class="col-lg-3">
+        <img class="mx-auto py-2 rounded" [src]="img" height="200" width="200">
+      </div>
+    </div>
+
     <div *ngIf="projetoForm.invalid; else botaoLiberado" class="col-lg-12">
       <button disabeld class="btn btn-secondary btn-block">Cadastrar Projeto</button>
     </div>

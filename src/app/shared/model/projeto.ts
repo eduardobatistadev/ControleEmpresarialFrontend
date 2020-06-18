@@ -15,7 +15,20 @@ export class Projeto {
     complemento?: string;
     valorTotal?: number;
     descricao?: string;
-    img?: string;
+    img?: Array<string>;
     fornecedores?: Fornecedor[];
     cliente: Cliente;
+    firstImage?: string;
+
+    constructor(){
+      this.img = [];
+    }
+
+    addImagem(img: string){
+      this.img.push(img);
+    }
+
+    findFirstImg() {
+      this.firstImage = this.img.find( element => element !== null );
+    }
 }

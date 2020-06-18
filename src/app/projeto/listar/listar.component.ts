@@ -55,4 +55,8 @@ export class ListarComponent implements OnInit {
     location.reload();
   }
 
+  getFirstImg(projeto: Projeto): string {
+    return projeto.img.find( element => element !== null);
+  }
+
 }

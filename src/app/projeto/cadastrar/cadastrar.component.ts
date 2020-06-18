@@ -15,6 +15,7 @@ export class CadastrarComponent implements OnInit {
   @ViewChild('projetoForm') projetoForm;
   @ViewChild('cep') cep;
 
+  imagePath: any;
   projeto = new Projeto();
   erroEndereco: string;
   erroForm: string;
@@ -56,6 +57,23 @@ export class CadastrarComponent implements OnInit {
   resetaForm(){
     this.projeto = new Projeto();
     this.cadastroSucesso = false;
+  }
+
+  preview(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+    const mimeType = files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = () => {
+      this.projeto.addImagem(reader.result.toString());
+    };
+    console.log(this.projeto);
   }
 
   reload(){

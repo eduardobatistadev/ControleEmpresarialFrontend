@@ -26,6 +26,10 @@ export class GaleriaComponent implements OnInit {
     });
   }
 
+  getFirstImg(projeto: Projeto): string {
+    return projeto.img.find( element => element !== null);
+  }
+
   doSearch(value: string) {
     this.projeto = this.projetoInicial;
     console.log(`value=${value}`);

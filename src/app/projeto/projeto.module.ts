@@ -5,14 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ListarComponent } from './listar/listar.component';
 import { GaleriaComponent } from './listar/galeria/galeria.component';
-
-
+import { SimplebarAngularModule } from 'simplebar-angular';
 
 @NgModule({
   declarations: [CadastrarComponent, HomeComponent, ListarComponent, GaleriaComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SimplebarAngularModule
   ]
 })
 export class ProjetoModule { }

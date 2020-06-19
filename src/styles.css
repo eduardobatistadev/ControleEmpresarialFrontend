@@ -1,2 +1,9 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~simplebar/dist/simplebar.css';
+.simplebar-scrollbar::before {
+  background-color: goldenrod;
+}
 
+.simplebar-scrollbar {
+  margin-right: 1px;
+}

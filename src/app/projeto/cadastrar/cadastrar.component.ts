@@ -143,7 +143,11 @@ export class CadastrarComponent implements OnInit {
     this.common.setSubject(true);
   }
 
-
+  cancelar(){
+    this.resetaForm();
+    this.resolveListas();
+    this.common.setEditProjetoId(null);
+  }
 
   buscaEnderecoPorCep() {
     this.viacep.buscarPorCep(this.projeto.cep).then((endereco: Endereco) => {

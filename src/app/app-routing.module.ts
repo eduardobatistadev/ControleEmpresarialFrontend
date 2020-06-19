@@ -1,3 +1,4 @@
+import { GaleriaComponent } from './projeto/listar/galeria/galeria.component';
 import { FornecedorRouting } from './fornecedor/fornecedor-routing.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { GaleriaRouting } from './projeto/galeria-routing.module copy';
 
 
 const routes: Routes = [
+  { path: '', component: GaleriaComponent },
   ...FornecedorRouting,
   ...ClienteRouting,
   ...ProjetoRouting,
@@ -16,6 +18,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],         
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

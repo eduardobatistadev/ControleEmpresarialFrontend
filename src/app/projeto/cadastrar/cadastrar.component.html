@@ -111,23 +111,33 @@
         <label class="custom-file-label" for="img">Escolha uma imagem...</label>
       </div>
     </div>
-
     <div class="col-lg-12 ml-1 row">
       <p *ngIf="projeto.img.length !== 0">Preview:</p>
       <div *ngFor="let img of projeto.img" class="col-lg-3 text-center">
-        <a class="remove text-center" (click)="removeImagem(img)"><i
-          class="fas fa-times-circle"></i></a>
+        <a class="remove text-center" (click)="removeImagem(img)"><i class="fas fa-times-circle"></i></a>
         <img class="mx-auto py-2 rounded" [src]="img" height="200" width="200">
       </div>
     </div>
-
-    <div *ngIf="projetoForm.invalid; else botaoLiberado" class="col-lg-12">
-      <button disabeld class="btn btn-secondary btn-block">Cadastrar Projeto</button>
-    </div>
-    <ng-template #botaoLiberado>
-      <div class="col-lg-12">
-        <button class="btn btn-success btn-block">Cadastrar Projeto</button>
+    <div class="col-lg-12" *ngIf="!projeto.id;else alterar">
+      <div *ngIf="projetoForm.invalid; else botaoLiberado">
+        <button disabled class="btn btn-secondary btn-block">Cadastrar Projeto</button>
       </div>
+      <ng-template #botaoLiberado>
+        <button class="btn btn-success btn-block">Cadastrar Projeto</button>
+      </ng-template>
+    </div>
+    <ng-template #alterar>
+      <div *ngIf="projetoForm.invalid; else botaoLiberado" class="col-lg-6">
+        <button disabled class="btn btn-secondary btn-block">Alterar Projeto</button>
+      </div>
+      <div class="col-lg-6">
+        <button (click)="cancelar()" class="btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <ng-template #botaoLiberado>
+        <div class="col-lg-6">
+          <button class="btn btn-success btn-block">Alterar Projeto</button>
+        </div>
+      </ng-template>
     </ng-template>
   </div>
 </form>

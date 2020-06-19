@@ -10,19 +10,29 @@ import { Projeto } from 'src/app/shared/model/projeto';
 })
 export class GaleriaComponent implements OnInit {
 
-  projeto: Projeto[]
+  projeto: Projeto[];
+  projetoInicial: Projeto[];
 
   constructor(private router: Router, private projetoService: ProjetoService) { }
 
   ngOnInit(): void {
-    this.projetoService.findAll().subscribe(projeto =>{
+    this.buscaTodos();
+  }
+
+  buscaTodos() {
+    this.projetoService.findAll().subscribe(projeto => {
       this.projeto = projeto;
+      this.projetoInicial = this.projeto;
     });
   }
-  
-  doSearch(value: string){
+
+  doSearch(value: string) {
+    this.projeto = this.projetoInicial;
     console.log(`value=${value}`);
-    this.router.navigateByUrl(`/galeria/${value}`);
+    this.projeto = this.projeto.filter(f => {
+      console.log(f.nomeProjeto.toLowerCase().indexOf(value.toLowerCase()) >= 0);
+      return f.nomeProjeto.toLowerCase().indexOf(value.toLowerCase()) >= 0;
+    });
   }
 
 }

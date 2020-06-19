@@ -49,11 +49,8 @@ export class CadastrarComponent implements OnInit {
   }
 
   resolveListas() {
-    console.log(this.fornecedores);
-
-    this.fornecedores.forEach( f => this.projeto.fornecedores.forEach(e =>
-      this.fornecedores.filter(f2 => f2.id !== e.id) ));
-    console.log(this.fornecedores);
+    this.projeto.fornecedores.forEach( f =>
+      { this.fornecedores = this.fornecedores.filter( e => e.id !== f.id); });
   }
 
   buscaProjetoPorId(id: number) {
@@ -64,7 +61,6 @@ export class CadastrarComponent implements OnInit {
       this.projeto = data;
       this.resolveListas();
     });
-
   }
 
   onSubmit(): void {

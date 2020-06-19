@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <form class="">
     <div class="input-group col-lg-12">
-      <input #myInput (keyup.enter)="doSearch(myInput.value)" class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+      <input #myInput (keyup)="doSearch(myInput.value)" (keyup.enter)="doSearch(myInput.value)" class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
       <div class="input-group-append">
         <button (click)="doSearch(myInput.value)" class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i> Pesquisar</button>
       </div>

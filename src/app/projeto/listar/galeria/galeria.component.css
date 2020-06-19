@@ -1,9 +1,9 @@
 .card:hover {
   position: relative;
   width: 250px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.1s ease-in-out;
   transform: scale(1.1, 1.1);
-  box-shadow: 4px 4px 15px black;
+  box-shadow: 2px 2px 10px #9b8a3e;
   z-index: 100;
 }
 

@@ -13,3 +13,4 @@ export class DetalhesComponent implements OnInit {
   }
 
 }
+

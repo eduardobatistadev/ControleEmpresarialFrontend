@@ -9,8 +9,8 @@
     </form>
 
     <div class="container row m-auto">
-        <div *ngFor="let tempGaleria of projeto" class="card mt-5 mx-3 col-lg-3" style="width:300px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+        <div *ngFor="let tempGaleria of projeto" class="card mt-5 mx-3 col-lg-3" style="width:250px">
+            <img class="card-img-top" [src]="tempGaleria.img" alt="Card image">
             <div class="card-body">
               <h4 class="card-title">{{tempGaleria.nomeProjeto}}</h4>
               <a href="#" class="btn btn-primary">See Profile</a>

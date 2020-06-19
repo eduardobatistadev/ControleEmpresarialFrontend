@@ -16,10 +16,10 @@ export class GaleriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.projetoService.findAll().subscribe(projeto =>{
-      this.projeto = projeto
+      this.projeto = projeto;
     });
   }
-
+  
   doSearch(value: string){
     console.log(`value=${value}`);
     this.router.navigateByUrl(`/galeria/${value}`);

@@ -27,7 +27,7 @@
         <ng-template #cliente><td>{{tempProjeto.cliente.nome}}</td></ng-template>
         <td>{{tempProjeto.valorTotal}}</td>
         <td><a class="text-success mr-2" data-toggle="collapse" href="#infos" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a>
-        <a class="text-primary mx-2" href=""><i class="fas fa-user-cog"></i></a>
+        <a class="text-primary mx-2" (click)="edit(tempProjeto.id)"><i class="fas fa-user-cog"></i></a>
         <a class="text-danger ml-2" href=""><i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>

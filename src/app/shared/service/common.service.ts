@@ -10,6 +10,10 @@ export class CommonService {
 
   public demoSubject: BehaviorSubject<any> = new BehaviorSubject(null);
   public idSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+  public idProjeto: BehaviorSubject<any> = new BehaviorSubject(null);
+  public idCliente: BehaviorSubject<any> = new BehaviorSubject(null);
+
+
 
   setSubject(value: boolean) {
     if (value) {
@@ -24,6 +28,22 @@ export class CommonService {
       this.idSubject.next(value);
     } else {
       this.idSubject.next(null);
+    }
+  }
+
+  setEditClienteId(value: number) {
+    if (value) {
+      this.idCliente.next(value);
+    } else {
+      this.idCliente.next(null);
+    }
+  }
+
+  setEditProjetoId(value: number) {
+    if (value) {
+      this.idProjeto.next(value);
+    } else {
+      this.idProjeto.next(null);
     }
   }
 }

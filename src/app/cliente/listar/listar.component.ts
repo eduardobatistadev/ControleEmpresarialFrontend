@@ -54,7 +54,7 @@ export class ListarComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.common.setEditId(id);
+    this.common.setEditClienteId(id);
   }
 
   delete(id: number, nome: string) {

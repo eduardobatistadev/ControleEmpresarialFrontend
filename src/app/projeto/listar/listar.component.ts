@@ -24,6 +24,10 @@ export class ListarComponent implements OnInit {
     this.buscarTodos();
   }
 
+  edit(id: number){
+    this.common.setEditProjetoId(id);
+  }
+
   buscarTodos(): void{
     this.projetoService.findAll().subscribe(projeto => {
       this.projetos = projeto;

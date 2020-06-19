@@ -29,7 +29,7 @@ export class CadastrarComponent implements OnInit {
   ngOnInit(): void {
     this.loading = false;
     this.resetaForm();
-    this.common.idSubject.subscribe(res => {
+    this.common.idCliente.subscribe(res => {
       if (res !== null) {
         this.buscarPorId(res);
       }
@@ -78,6 +78,7 @@ export class CadastrarComponent implements OnInit {
     this.cadastroSucesso = false;
     this.alterarSucesso = false;
     this.loading = false;
+    this.common.setEditClienteId(null);
   }
 
   reload(){
@@ -115,7 +116,7 @@ export class CadastrarComponent implements OnInit {
   cancelar() {
     this.resetaForm();
     this.clienteForm.reset();
-    this.common.setEditId(null);
+    this.common.setEditClienteId(null);
   }
 
 }

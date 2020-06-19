@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { ListarComponent } from './listar/listar.component';
 import { GaleriaComponent } from './listar/galeria/galeria.component';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import { DetalhesComponent } from './detalhes/detalhes.component';
 
 @NgModule({
-  declarations: [CadastrarComponent, HomeComponent, ListarComponent, GaleriaComponent],
+  declarations: [CadastrarComponent, HomeComponent, ListarComponent, GaleriaComponent, DetalhesComponent],
   imports: [
     CommonModule,
     FormsModule,

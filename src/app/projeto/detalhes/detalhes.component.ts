@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ProjetoService } from 'src/app/shared/service/projeto.service';
 import { Fornecedor } from 'src/app/shared/model/fornecedor';
 import { FornecedorService } from 'src/app/shared/service/fornecedor.service';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-detalhes',

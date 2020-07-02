@@ -1,5 +1,5 @@
 
-<div *ngFor="let tempProjetos of projetos" class="mt-5 container col-lg-6 table-responsive rounded">
+<div *ngFor="let tempProjetos of projetos" class="mt-5 container col-lg-10 table-responsive rounded">
     <h5 style="text-align: center;">Detalhes do Projeto</h5><hr>
 <table class="table table-hover table-lg table-striped mb-3 py-0 rounded">
     <tbody>
@@ -41,19 +41,25 @@
     
     <thead>
       <tr>
-        <th colspan="3" class="table-secondary border-secondary text-center" scope="row">Fornecedores</th>
+        <th colspan="5" class="table-secondary border-secondary text-center" scope="row">Fornecedores</th>
       </tr>
       <tr class="table-warning">
-        <th scope="row">Nome</th>
+        <th scope="row">Empresa</th>
+        <th scope="row">Atendente</th>
         <th scope="row">Email</th>
         <th scope="row">Tel</th>
+        <th scope="col" colspan="3"><i class="fas fa-cogs"> </i> Opções</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let projeto of tempProjetos.fornecedores">
         <th>{{projeto.nomeEmpresa}}</th>
+        <th>{{projeto.atendente}}</th>
         <td>{{projeto.email}}</td>
         <td>{{projeto.tel}}</td>
+
+        <td class="text-center"><a class="text-success mr-2" data-toggle="modal" [attr.data-target]="'#f'+projeto.id"><i
+          class="fas fa-plus-square"></i></a></td>
       </tr>
       <tr>
     </tbody>

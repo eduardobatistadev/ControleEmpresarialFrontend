@@ -11,6 +11,7 @@ import { FooterComponent } from './fragments/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClienteModule } from './cliente/cliente.module';
 import { ProjetoModule } from './projeto/projeto.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ProjetoModule } from './projeto/projeto.module';
     FornecedorModule,
     HttpClientModule,
     ClienteModule,
-    ProjetoModule
+    ProjetoModule,
   ],
   providers: [ NgxViacepService ],
   bootstrap: [AppComponent]

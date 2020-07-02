@@ -8,12 +8,13 @@ import { ProjetoRouting} from './projeto/projeto-routing.module';
 import { GaleriaRouting } from './projeto/galeria-routing.module copy';
 
 
+
 const routes: Routes = [
   { path: '', component: GaleriaComponent },
   ...FornecedorRouting,
   ...ClienteRouting,
   ...ProjetoRouting,
-  ...GaleriaRouting
+  ...GaleriaRouting,
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Projeto } from 'src/app/shared/model/projeto';
+import { Cliente } from 'src/app/shared/model/cliente';
 
 @Component({
   selector: 'app-detalhes',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalhesComponent implements OnInit {
 
+  projetos: Projeto[];
+  
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
 

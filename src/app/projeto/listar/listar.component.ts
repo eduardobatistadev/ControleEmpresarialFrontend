@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Projeto } from 'src/app/shared/model/projeto';
 import { CommonService } from 'src/app/shared/service/common.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { ProjetoService } from 'src/app/shared/service/projeto.service';
 
 @Component({
@@ -14,10 +14,11 @@ export class ListarComponent implements OnInit {
   projetos: Projeto[];
   sortedByName: boolean;
 
-  constructor(private projetoService: ProjetoService, route: Router, private common: CommonService) { }
+  constructor(private projetoService: ProjetoService, router: Router, private common: CommonService) { }
 
 
   ngOnInit(): void {
+
     this.common.demoSubject.subscribe(res => {
       this.buscarTodos();
     }, error => console.log(error.error.text));

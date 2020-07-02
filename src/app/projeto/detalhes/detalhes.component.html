@@ -1,1 +1,44 @@
-<p>detalhes works!</p>
+<div class="mt-5 container col-lg-6 table-responsive rounded">
+    <h5 style="text-align: center;">Projeto</h5><hr>
+<table class="table table-hover table-lg table-striped mb-3 py-0 rounded">
+    <tbody>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Nome</th>
+          <td>{{tempProjeto.cliente.nome}}</td>
+        </tr>
+        <tr *ngIf="f.dt_nasc !== null">
+          <th class="table-warning border-warning" scope="row">Dt_Nasc</th>
+          <td>{{f.dt_nasc}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">e-mail</th>
+          <td>{{f.email}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Celular</th>
+          <td>{{f.celular}}</td>
+        </tr>
+        <tr *ngIf="f.telefoneFixo !== null">
+          <th class="table-warning border-warning" scope="row">Telefone Fixo</th>
+          <td>{{f.telefoneFixo}}</td>
+        </tr>
+        <tr *ngIf="f.cpf !== null">
+          <th class="table-warning border-warning" scope="row">CPF</th>
+          <td>{{f.cpf}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">CEP</th>
+          <td>{{f.cep}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Endereço</th>
+          <td>{{f.rua}}, {{f.numeroCasa}}, {{f.complemento}} </td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Bairro, Cidade - UF</th>
+          <td>{{f.bairro}}, {{f.cidade}} - {{f.estado}}</td>
+        </tr>
+      </tbody>
+    
+  </table>
+</div>

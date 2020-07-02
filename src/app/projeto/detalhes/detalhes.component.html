@@ -1,44 +1,62 @@
-<div class="mt-5 container col-lg-6 table-responsive rounded">
-    <h5 style="text-align: center;">Projeto</h5><hr>
+
+<div *ngFor="let tempProjetos of projetos" class="mt-5 container col-lg-6 table-responsive rounded">
+    <h5 style="text-align: center;">Detalhes do Projeto</h5><hr>
 <table class="table table-hover table-lg table-striped mb-3 py-0 rounded">
     <tbody>
+      <tr>
+        <th colspan="2" class="table-secondary border-secondary text-center" scope="row">Projeto</th>
+      </tr>
+      <tr>
+        <th class="table-warning border-secondary" scope="row">Nome do Projeto</th>
+        <td class="text-center">{{tempProjetos.nomeProjeto}}</td>
+      </tr>
         <tr>
-          <th class="table-warning border-warning" scope="row">Nome</th>
-          <td>{{tempProjeto.cliente.nome}}</td>
-        </tr>
-        <tr *ngIf="f.dt_nasc !== null">
-          <th class="table-warning border-warning" scope="row">Dt_Nasc</th>
-          <td>{{f.dt_nasc}}</td>
-        </tr>
-        <tr>
-          <th class="table-warning border-warning" scope="row">e-mail</th>
-          <td>{{f.email}}</td>
-        </tr>
-        <tr>
-          <th class="table-warning border-warning" scope="row">Celular</th>
-          <td>{{f.celular}}</td>
-        </tr>
-        <tr *ngIf="f.telefoneFixo !== null">
-          <th class="table-warning border-warning" scope="row">Telefone Fixo</th>
-          <td>{{f.telefoneFixo}}</td>
-        </tr>
-        <tr *ngIf="f.cpf !== null">
-          <th class="table-warning border-warning" scope="row">CPF</th>
-          <td>{{f.cpf}}</td>
+          <th class="table-warning border-warning" scope="row">Cliente</th>
+          <td class="text-center">{{tempProjetos.cliente.nome}}</td>
         </tr>
         <tr>
-          <th class="table-warning border-warning" scope="row">CEP</th>
-          <td>{{f.cep}}</td>
+          <th class="table-warning border-warning" scope="row">Data de Início</th>
+          <td class="text-center">{{tempProjetos.dt_inicio}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Data Final</th>
+          <td class="text-center">{{tempProjetos.dt_fim}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Descrição</th>
+          <td class="text-center">{{tempProjetos.descricao}}</td>
+        </tr>
+        <tr>
+          <th class="table-warning border-warning" scope="row">Valor</th>
+          <td class="text-center">{{tempProjetos.valorTotal | currency: 'BRL'}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Endereço</th>
-          <td>{{f.rua}}, {{f.numeroCasa}}, {{f.complemento}} </td>
-        </tr>
-        <tr>
-          <th class="table-warning border-warning" scope="row">Bairro, Cidade - UF</th>
-          <td>{{f.bairro}}, {{f.cidade}} - {{f.estado}}</td>
+          <td class="text-center">{{tempProjetos.rua}}, {{tempProjetos.numeroCasa}}</td>
         </tr>
       </tbody>
+  </table>
+  <hr>
+  <table class="table table-striped table-bordered">
     
+    <thead>
+      <tr>
+        <th colspan="3" class="table-secondary border-secondary text-center" scope="row">Fornecedores</th>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">Nome</th>
+        <th scope="row">Email</th>
+        <th scope="row">Tel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let projeto of tempProjetos.fornecedores">
+        <th>{{projeto.nomeEmpresa}}</th>
+        <td>{{projeto.email}}</td>
+        <td>{{projeto.tel}}</td>
+      </tr>
+      <tr>
+    </tbody>
   </table>
 </div>
+

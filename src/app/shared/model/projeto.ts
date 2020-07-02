@@ -16,7 +16,7 @@ export class Projeto {
     valorTotal?: number;
     descricao?: string;
     img?: Array<string>;
-    fornecedores?: Fornecedor[];
+    fornecedores: Fornecedor[];
     cliente: Cliente;
     firstImage?: string;
 

@@ -19,10 +19,13 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.common.demoSubject.subscribe(res => {
       this.buscarTodos();
     }, error => console.log(error.error.text));
     this.buscarTodos();
+
+    
   }
 
   edit(id: number){

@@ -33,3 +33,4 @@ export class Projeto {
       this.firstImage = this.img.find( element => element !== null );
     }
 }
+

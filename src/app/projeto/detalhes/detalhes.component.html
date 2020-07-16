@@ -1,5 +1,5 @@
 
-<div *ngFor="let tempProjetos of projetos" class="mt-5 container col-lg-10 table-responsive rounded">
+<div  class="mt-5 container col-lg-10 table-responsive rounded">
     <h5 style="text-align: center;">Detalhes do Projeto</h5><hr>
 <table class="table table-hover table-lg table-striped mb-3 py-0 rounded">
     <tbody>
@@ -8,31 +8,31 @@
       </tr>
       <tr>
         <th class="table-warning border-secondary" scope="row">Nome do Projeto</th>
-        <td class="text-center">{{tempProjetos.nomeProjeto}}</td>
+        <td class="text-center">{{projeto.nomeProjeto}}</td>
       </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Cliente</th>
-          <td class="text-center">{{tempProjetos.cliente.nome}}</td>
+          <td class="text-center">{{projeto.cliente.nome}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Data de Início</th>
-          <td class="text-center">{{tempProjetos.dt_inicio}}</td>
+          <td class="text-center">{{projeto.dt_inicio}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Data Final</th>
-          <td class="text-center">{{tempProjetos.dt_fim}}</td>
+          <td class="text-center">{{projeto.dt_fim}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Descrição</th>
-          <td class="text-center">{{tempProjetos.descricao}}</td>
+          <td class="text-center">{{projeto.descricao}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Valor</th>
-          <td class="text-center">{{tempProjetos.valorTotal | currency: 'BRL'}}</td>
+          <td class="text-center">{{projeto.valorTotal | currency: 'BRL'}}</td>
         </tr>
         <tr>
           <th class="table-warning border-warning" scope="row">Endereço</th>
-          <td class="text-center">{{tempProjetos.rua}}, {{tempProjetos.numeroCasa}}</td>
+          <td class="text-center">{{projeto.rua}}, {{projeto.numeroCasa}}</td>
         </tr>
       </tbody>
   </table>
@@ -52,14 +52,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let projeto of tempProjetos.fornecedores">
-        <th>{{projeto.nomeEmpresa}}</th>
-        <th>{{projeto.atendente}}</th>
-        <td>{{projeto.email}}</td>
-        <td>{{projeto.tel}}</td>
+      <tr *ngFor="let tempforn of fornecedores">
+        <th>{{tempforn.nomeEmpresa}}</th>
+        <th>{{tempforn.atendente}}</th>
+        <td>{{tempforn.email}}</td>
+        <td>{{tempforn.tel}}</td>
 
-        <td class="text-center"><a class="text-success mr-2" data-toggle="modal" [attr.data-target]="'#f'+projeto.id"><i
+      
+        <td class="text-center"><a class="text-success mr-2" data-toggle="modal" [attr.data-target]="'#f'+fornecedor.id"><i
           class="fas fa-plus-square"></i></a></td>
+      
       </tr>
       <tr>
     </tbody>

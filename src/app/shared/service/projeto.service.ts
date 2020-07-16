@@ -25,6 +25,10 @@ export class ProjetoService {
      return this.http.get<Projeto>(`${this.url}/${id}`);
    }
 
+   readById(id: string): Observable<Projeto> {
+     return this.http.get<Projeto>(`${this.url}/${id}`)
+   }
+
    public deleteById(id: number): void{
     this.http.delete(`${this.url}/${id}`).subscribe();
    }

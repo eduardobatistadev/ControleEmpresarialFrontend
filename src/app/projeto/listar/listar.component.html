@@ -16,6 +16,8 @@
       </tr>
 
 
+
+
     </thead>
     <tbody>
       <tr *ngFor="let tempProjeto of projetos">
@@ -26,7 +28,7 @@
         <td>{{tempProjeto.dt_inicio}}</td>
         <td *ngIf="tempProjeto.cliente === null; else cliente">{{tempProjeto.cliente}}</td>
         <ng-template #cliente><td>{{tempProjeto.cliente.nome}}</td></ng-template>
-        <td>{{tempProjeto.valorTotal}}</td>
+        <td>{{tempProjeto.valorTotal |currency: 'BRL'}}</td>
         <td>
         <a [routerLink]="['/projeto', tempProjeto.id]" class="text-success mr-2"  data-toggle="collapse" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a>
         <a class="text-primary mx-2" (click)="edit(tempProjeto.id)"><i class="fas fa-user-cog"></i></a>
@@ -36,4 +38,5 @@
     </tbody>
   </table>
 </div>
+
 

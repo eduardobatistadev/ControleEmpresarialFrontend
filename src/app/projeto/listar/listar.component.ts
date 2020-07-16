@@ -3,6 +3,7 @@ import { Projeto } from 'src/app/shared/model/projeto';
 import { CommonService } from 'src/app/shared/service/common.service';
 import { Router} from '@angular/router';
 import { ProjetoService } from 'src/app/shared/service/projeto.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listar-projeto',
@@ -14,11 +15,11 @@ export class ListarComponent implements OnInit {
   projetos: Projeto[];
   sortedByName: boolean;
 
-  constructor(private projetoService: ProjetoService, router: Router, private common: CommonService) { }
+
+  constructor(private projetoService: ProjetoService, router: Router, private common: CommonService, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
-
 
     this.common.demoSubject.subscribe(res => {
       this.buscarTodos();

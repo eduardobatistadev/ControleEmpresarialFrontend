@@ -68,4 +68,17 @@ export class ListarComponent implements OnInit {
     return projeto.img.find( element => element !== null);
   }
 
+  delete (id: number, nome: string) {
+    if (confirm('Certeza que deseja excluir o projeto ' + nome)) {
+      this.projetoService.deleteById(id).subscribe(data => {
+        this.buscarDados();
+      }, error => {
+        console.log(error);
+      });
+    } else {
+
+    }
+  }
+
+
 }

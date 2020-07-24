@@ -32,7 +32,7 @@
         <td>
         <a [routerLink]="['/projeto', tempProjeto.id]" class="text-success mr-2"  data-toggle="collapse" role="button" aria-expanded="false" aria-controls="infos"><i class="fas fa-plus-square"></i></a>
         <a class="text-primary mx-2" (click)="edit(tempProjeto.id)"><i class="fas fa-user-cog"></i></a>
-        <a class="text-danger ml-2" href=""><i class="fas fa-trash-alt"></i></a>
+        <a class="text-danger ml-2" (click)="delete(tempProjeto.id, tempProjeto.nomeProjeto)" href=""><i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>
     </tbody>

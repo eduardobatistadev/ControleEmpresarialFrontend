@@ -3,6 +3,7 @@ import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/shared/service/common.service';
+import { Projeto } from 'src/app/shared/model/projeto';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -12,6 +13,8 @@ import { CommonService } from 'src/app/shared/service/common.service';
 export class ListarComponent implements OnInit {
 
   clientes: Cliente[];
+  cliente: Cliente;
+  projetos: Projeto[];
   sortedByName: boolean;
 
   constructor(private clienteService: ClienteService, route: Router, private common: CommonService) { }
